@@ -1,10 +1,10 @@
-package com.Launchcode.demo;
+package com.unit3project.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NationalParkAppApplicationTests {
+class ProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
