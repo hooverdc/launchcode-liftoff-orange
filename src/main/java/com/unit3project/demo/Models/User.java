@@ -2,16 +2,38 @@ package com.unit3project.demo.Models;
 
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Entity
 public class User extends AbstractEntity{
 
+    @NotBlank
     private String userName;
 
-    @Email
-    private String email;
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+//@Email
+    //private String email;
 
-    private String hashWord;
+    @NotBlank
+    private String pwHash;
+
+    public User() {}
+
+    public User(String userName, String pwHash) {
+        this.userName = userName;
+        this.pwHash = pwHash;
+    }
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
+    }
 
     public String getUserName() {
         return userName;
@@ -21,11 +43,15 @@ public class User extends AbstractEntity{
         this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
+    public void setPwHash(String pwHash) {
+        this.pwHash = pwHash;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    //public String getEmail() {
+    //    return email;
+    //}
+
+    //public void setEmail(String email) {
+    //    this.email = email;
+    //}
 }
