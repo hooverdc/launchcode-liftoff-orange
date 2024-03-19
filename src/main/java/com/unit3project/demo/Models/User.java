@@ -24,9 +24,10 @@ public class User extends AbstractEntity{
 
     public User() {}
 
-    public User(String userName, String pwHash) {
+    public User(String userName, String password) {
+        super();
         this.userName = userName;
-        this.pwHash = pwHash;
+        this.pwHash = encoder.encode(password);
     }
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -41,6 +42,14 @@ public class User extends AbstractEntity{
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id'" + getId() + '\'' +
+                "userName='" + userName + '\'' +
+                '}';
     }
 
     public void setPwHash(String pwHash) {

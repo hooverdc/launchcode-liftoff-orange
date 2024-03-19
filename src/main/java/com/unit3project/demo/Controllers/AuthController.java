@@ -37,7 +37,5 @@ public class AuthController {
         return userOpt.get();
     }
 
-    //@GetMapping("/register")
-
 
 }
