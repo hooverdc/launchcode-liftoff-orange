@@ -5,9 +5,9 @@ public class Fee {
     private String title;
 
     private String description;
-    private int cost;
+    private Float cost;
 
-    public Fee(String title, String description, int cost) {
+    public Fee(String title, String description, Float cost) {
         this.title = title;
         this.description = description;
         this.cost = cost;
@@ -29,11 +29,11 @@ public class Fee {
         this.description = description;
     }
 
-    public int getCost() {
+    public Float getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(Float cost) {
         this.cost = cost;
     }
 }
