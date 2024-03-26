@@ -36,3 +36,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### thousands of node_module files ###
+/ReactFrontEnd/node_modules
+
+### MISC ###
+#.env

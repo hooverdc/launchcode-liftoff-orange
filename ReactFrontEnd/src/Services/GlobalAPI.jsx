@@ -2,15 +2,8 @@
 /* API INFO BELOW 
 
 ###########
-note the reference to the API KEY, stored as const api_key. Best practices 
-dictate keeping API key secure. You must create a new file in the root
-folder of the project called ".env". In that file, in the first line
-type in: 
-"VITE_REACT_APP_NPS_API_KEY=" 
-(no quotes)
-After the "=", paste in the API key (no ';' or anything is needed at the
-end of the line). Then be sure to add "*.env" to the .gitignore, so that
-our API key doesn't end up on github in plain-text.
+note the reference to the API KEY, stored as const api_key. Be sure to 
+uncomment the last line in .gitignore so file ".env" isnt pushed
 ###########
 
 */
