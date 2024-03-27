@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import './App.css'
 import Header from './Components/Header'
@@ -14,9 +15,9 @@ import Favorites from './Components/Favorites';
 function App() {
   return (
     <>
-    <Header />
-    <Slideshow />
-    <h1>THIS IS THE HOME PAGE</h1>
+      <Header />
+      <Slideshow />
+      <h1>THIS IS THE HOME PAGE</h1>
     </>
   )
 }
