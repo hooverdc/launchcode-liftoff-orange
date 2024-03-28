@@ -2,7 +2,6 @@ import React from 'react'
 import Header from './Header'
 import SearchForm from './SearchForm'
 import './SearchHeader.css'
-//import SearchHeader from './SearchHeader'
 
 const ParkSearch = () => {
   return (
@@ -15,10 +14,12 @@ const ParkSearch = () => {
                     <h2 className='search-header-title text-capitalize'>
                     Search for a park to visit!
                     </h2>
-                    <SearchForm />
+                  <SearchForm />   
+                    
                 </div>
                 
               </header>
+
             </div>
     </>
   )
