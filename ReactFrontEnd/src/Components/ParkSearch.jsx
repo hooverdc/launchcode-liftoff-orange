@@ -1,13 +1,25 @@
 import React from 'react'
-import Slideshow from './Slideshow'
 import Header from './Header'
+import SearchForm from './SearchForm'
+import './SearchHeader.css'
+//import SearchHeader from './SearchHeader'
 
-function ParkSearch() {
+const ParkSearch = () => {
   return (
     <>
         <Header />
-        <Slideshow />
-        <h1>THIS IS THE SEARCH PAGE</h1>
+            <div className='holder'>
+              <header className='search-header'>
+                
+                <div className='search-header-content flex flex-c text-center text-white'>
+                    <h2 className='search-header-title text-capitalize'>
+                    Search for a park to visit!
+                    </h2>
+                    <SearchForm />
+                </div>
+                
+              </header>
+            </div>
     </>
   )
 }

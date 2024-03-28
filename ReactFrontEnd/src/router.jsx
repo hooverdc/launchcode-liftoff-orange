@@ -6,9 +6,12 @@ import App from './App.jsx'
 import { createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter([
-    { path: "/", element: <App /> },
-    { path: "/home", element: <Home /> },
+   
+  
+    // { path: "/", element: <App /> },
+    { path: "/", element: <Home /> },
     { path: "/parksearch", element: <ParkSearch /> },
     { path: "/favorites", element: <Favorites />},
     { path: "/itinerary", element: <Itinerary /> },
+  
   ]); 
