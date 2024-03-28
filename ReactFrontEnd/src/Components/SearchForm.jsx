@@ -13,7 +13,7 @@ const SearchForm = () => {
           <div className='search-form-elem flex flex-sb bg-white'>
             <input type = "text" className='form-control' placeholder='Yellowstone Park ...' />
             <button type = "submit" className='flex flex-c'>
-              <FaSearch className='text-green' size = {32} />
+              <FaSearch className='text-' size = {32} />
             </button>
           </div>
         </form>
