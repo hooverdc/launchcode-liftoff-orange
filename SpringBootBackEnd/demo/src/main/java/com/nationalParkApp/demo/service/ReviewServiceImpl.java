@@ -38,4 +38,33 @@ public class ReviewServiceImpl implements ReviewService{
                 .collect(Collectors.toList());
         return reviews;
     }
+
+    @Override
+    public boolean deleteReview(Long id) {
+        ReviewEntity review = reviewRepository.findById(id).get();
+        reviewRepository.delete(review);
+        return true;
+    }
+
+    @Override
+    public Review getReviewById() {
+        return null;
+    }
+
+    @Override
+    public Review getReviewById(Long id) {
+        ReviewEntity reviewEntity = reviewRepository.findById(id).get();
+        Review review = new Review();
+        BeanUtils.copyProperties(reviewEntity, review);
+        return review;
+    }
+
+    @Override
+    public Review updateReview(Long id, Review review) {
+        ReviewEntity reviewEntity = reviewRepository.findById(id).get();
+        reviewEntity.setContent(review.getContent());
+
+        reviewRepository.save(reviewEntity);
+        return review;
+    }
 }
