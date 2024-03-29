@@ -15,12 +15,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    // <>
-    //   <Header />
-    //   <Slideshow />
-    //   <h1>THIS IS THE HOME PAGE</h1>
-    // </>
-
+    
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
