@@ -9,7 +9,6 @@ import Header from './Components/Header.jsx'
 import { createBrowserRouter } from 'react-router-dom'
 
 export const router = createBrowserRouter([
-   
   
     // { path: "/", element: <App /> },
     { path: "/", element: <Header />, errorElement: <ErrorPage />,

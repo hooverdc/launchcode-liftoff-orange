@@ -15,8 +15,8 @@ function Slideshow() {
     }
     
     const myArray = picList.map(item => item.fileInfo.url);
-    console.log("new array is:");
-    console.log(myArray[0]);
+    // console.log("new array is:");
+    // console.log(myArray[0]);
 
 
 
@@ -37,7 +37,7 @@ function Slideshow() {
         //and rightControl set to non-breaking space...delete those props to make them visible
         <>
         <div className="h-80 px-5 py-2">
-            <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;">
+            <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;" className="">
                 {picList.map((item) => (
                     <img src={item.fileInfo.url} className="min-w-full"/>
                 ))}

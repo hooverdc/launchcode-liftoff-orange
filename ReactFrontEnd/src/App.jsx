@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import Itinerary from './Components/Itinerary';
 import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
+import Register from './Components/Register'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
@@ -20,15 +21,17 @@ function App() {
     //   <Slideshow />
     //   <h1>THIS IS THE HOME PAGE</h1>
     // </>
-
-    <BrowserRouter>
+    
+    <>
+    <BrowserRouter> 
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<Header />} />
         <Route element={<ParkSearch />} />
         <Route element={<Favorites />} />
-        <Route element={<Itinerary />} />
+        <Route element={<Register />} />
       </Routes>
     </BrowserRouter>
+    </>
 
   )
 }

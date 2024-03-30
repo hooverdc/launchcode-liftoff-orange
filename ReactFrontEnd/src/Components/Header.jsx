@@ -86,8 +86,10 @@ function Header() {
                 {/* <div><HiUser size={23} coloer="white"/></div> */}
             </div>
         </div>
-        <Slideshow />
-        <Outlet></Outlet>
+            <Slideshow />
+        <div>
+            <Outlet />
+        </div>
         </>
     )
 }
