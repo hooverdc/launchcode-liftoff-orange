@@ -34,9 +34,9 @@ function Header() {
             path:'/favorites'
         },
         {
-            name:'ITINERARY',
-            icon:HiPaperAirplane,
-            path:'/itinerary'
+            name:'REGISTER',
+            icon:HiUser,
+            path:'/register'
         }
     ]
     return (
@@ -80,7 +80,7 @@ function Header() {
 
             {/* this is just a placeholder for an icon that could be used for the user's profile
             which is located in the nav bar, but outside of the other nav links*/}
-                <div><HiUser size={23} coloer="white"/></div>
+                {/* <div><HiUser size={23} coloer="white"/></div> */}
             </div>
         </div>
 
