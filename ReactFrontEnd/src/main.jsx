@@ -9,7 +9,7 @@ import Home from './Components/Home'
 import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
 import Itinerary from './Components/Itinerary';
-// import Root from "./routes/root";
+//import Root from "./routes/root";
 import { router } from './router';
 
 //### ORIGINAL ###
