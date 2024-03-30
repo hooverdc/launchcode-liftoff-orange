@@ -7,9 +7,9 @@ import Home from './Components/Home';
 import Itinerary from './Components/Itinerary';
 import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
-import { AppProvider } from './context';
+//import { AppProvider } from './context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+import SearchList from './Components/SearchList'
 
 // ### ORIGINAL BEFORE ROUTER ###
 // This page is being used as "home" page
@@ -28,6 +28,7 @@ function App() {
         <Route element={<ParkSearch />} />
         <Route element={<Favorites />} />
         <Route element={<Itinerary />} />
+        <Route element={<SearchList />} />
       </Routes>
     </BrowserRouter>
     </AppProvider>

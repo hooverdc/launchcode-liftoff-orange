@@ -9,7 +9,6 @@ const AppContext = React.createContext();
  const AppProvider = ({children}) => {
      const [searchTerm, setSearchTerm] = useState("yellowstone");
      const [searches, setSearch] = useState([]);
-     //const [loading, setLoading] = useState(true);
      const [resultName, setResultName] = useState("");
 
      const fetchSearches = useCallback(async() => {

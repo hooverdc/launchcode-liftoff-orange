@@ -21,7 +21,7 @@ const SearchForm = () => {
       setSearchTerm(searchText.current.value);
     }
 
-    navigate("/parksearch");
+    navigate("/parksearch/searchlist");
   };
 
   //^^^what makes the button clickable
