@@ -7,7 +7,7 @@ import './SearchHeader.css'
 const ParkSearch = () => {
   return (
     <>
-        <Header />
+        {/* <Header /> */}
             <div className='holder'>
               <header className='search-header'>
                 

@@ -21,8 +21,8 @@ function Register() {
   };
 
   return (<>
-    <Header />
-    <Slideshow />
+    {/* <Header /> */}
+    {/* <Slideshow /> */}
 
     <form onSubmit={handleSubmit}>
       <input

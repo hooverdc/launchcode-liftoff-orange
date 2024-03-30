@@ -6,7 +6,10 @@ import {HiHome, HiMagnifyingGlass,HiStar,HiPaperAirplane,HiBars3} from "react-ic
 import {HiUser} from "react-icons/hi2";
 import {HiPlus,HiDotsVertical} from "react-icons/hi";
 import { list } from 'postcss';
+import { Link } from 'react-router-dom';
 import HeaderItem from './HeaderItem';
+import { Outlet } from 'react-router-dom';
+import Slideshow from './Slideshow';
 
 
 {/* this functional component is used to define the header bar content */}
@@ -34,13 +37,13 @@ function Header() {
             path:'/favorites'
         },
         {
-            name:'ITINERARY',
-            icon:HiPaperAirplane,
-            path:'/itinerary'
+            name:'REGISTER',
+            icon:HiUser,
+            path:'/register'
         }
     ]
     return (
-
+        <>
         <div className="flex items-center justify-center p-5">
             <div className="flex gap-8 items-center">
             <img src={logo} className="w-[80px] 
@@ -80,10 +83,12 @@ function Header() {
 
             {/* this is just a placeholder for an icon that could be used for the user's profile
             which is located in the nav bar, but outside of the other nav links*/}
-                <div><HiUser size={23} coloer="white"/></div>
+                {/* <div><HiUser size={23} coloer="white"/></div> */}
             </div>
         </div>
-
+        <Slideshow />
+        <Outlet></Outlet>
+        </>
     )
 }
 
