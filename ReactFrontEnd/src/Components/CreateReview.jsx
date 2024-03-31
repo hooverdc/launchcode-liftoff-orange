@@ -42,31 +42,33 @@ const CreateReview = () => {
   return (
     <>
       <Header />
-      <div className="">
-        <h1>Create a review for ?</h1>
+      <div className="container">
+      <div className="flex justify-center">
+        <h1 className="font-semibold">Create a review for ?</h1>
       </div>
-      <div>
-        <label>Describe your visit:</label>
+      <div className="flex justify-center pt-6">
+        <label className="font-semibold">Describe your visit:</label>
       </div>
 
-      <div>
+      <div className="flex justify-center pt-6">
         <textarea
           name="content"
           value={review.content}
           onChange={(e) => handleChange(e)}
-          rows={6}
-          cols={50}
+          rows={10}
+          cols={100}
         ></textarea>
       </div>
 
-      <div className="">
-        <button className="" onClick={saveReview}>
+      <div className="flex justify-center space-x-10 pt-6">
+        <button className=" bg-green-700 hover:bg-green-900 font-semibold text-amber-950" onClick={saveReview}>
           Submit
         </button>
 
-        <button className="" onClick={reset}>
+        <button className="bg-red-700 hover:bg-red-900 font-semibold text-amber-950" onClick={reset}>
           Clear
         </button>
+      </div>
       </div>
     </>
   );
