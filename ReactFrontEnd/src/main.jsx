@@ -10,7 +10,7 @@ import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
 import Itinerary from './Components/Itinerary';
 //import Root from "./routes/root";
-import { router } from './router';
+// import { router } from './router';
 
 //### ORIGINAL ###
 // ReactDOM.createRoot(document.getElementById('root')).render(
@@ -23,6 +23,6 @@ import { router } from './router';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );

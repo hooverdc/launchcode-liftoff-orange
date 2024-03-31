@@ -28,5 +28,5 @@ let parkCode = "arch";
 const getParks=axios.get(parkBaseURL+"/parks?parkCode="+parkCode+"&api_key="+api_key);
 
 export default{
-    getImages,getParks, REVIEW_API_BASE_URL
+    getImages,getParks,
 }
