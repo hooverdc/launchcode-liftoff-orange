@@ -7,6 +7,7 @@ import {HiUser} from "react-icons/hi2";
 import {HiPlus,HiDotsVertical} from "react-icons/hi";
 import { list } from 'postcss';
 import HeaderItem from './HeaderItem';
+import { Outlet } from 'react-router';
 
 
 {/* this functional component is used to define the header bar content */}
@@ -52,16 +53,16 @@ function Header() {
                 {/* this nav bar is visible ONLY when screen width 
                 is OVER 7## px wide  */}
                 <div className="hidden md:flex gap-8">
-                    {menu.map((item)=>(
-                    <HeaderItem name={item.name} Icon={item.icon} path={item.path}/>
+                    {menu.map((item, index)=>(
+                    <HeaderItem key={index} name={item.name} Icon={item.icon} path={item.path}/>
                     ))}
                 </div>
                 
                 {/* this nav bar is visible ONLY when screen width 
                 is UNDER 7## px wide */}
                 <div className="flex md:hidden gap-5">
-                    {menu.map((item)=>(
-                    <HeaderItem name={item.name} Icon={item.icon} path={item.path}/>
+                    {menu.map((item, index)=>(
+                    <HeaderItem key={index} name={item.name} Icon={item.icon} path={item.path}/>
                     ))}
                 </div>
             
@@ -82,6 +83,7 @@ function Header() {
             which is located in the nav bar, but outside of the other nav links*/}
                 <div><HiUser size={23} coloer="white"/></div>
             </div>
+            <Outlet />
         </div>
 
     )

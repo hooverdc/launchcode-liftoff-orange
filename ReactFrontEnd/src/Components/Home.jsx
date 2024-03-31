@@ -2,14 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Slideshow from './Slideshow'
 import Header from './Header'
+import Register from './Register'
+import SearchNPS from './SearchNPS'
 
-//This page is redundant -
-// App.jsx is the "home" page
+
 function Home() {
   return (
     <>
         <Header />
         <Slideshow />
+        <SearchNPS />
+
+
         <h1>THIS IS THE HOME PAGE</h1>
     </>
   )

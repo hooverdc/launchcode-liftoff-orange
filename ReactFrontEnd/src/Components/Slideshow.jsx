@@ -38,8 +38,8 @@ function Slideshow() {
         <>
         <div className="h-80 px-5 py-2">
             <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;">
-                {picList.map((item) => (
-                    <img src={item.fileInfo.url} className="min-w-full"/>
+                {picList.map((item, index) => (
+                    <img src={item.fileInfo.url} className="min-w-full" key={index}/>
                 ))}
             </Carousel>
         </div>
