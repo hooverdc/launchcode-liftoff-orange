@@ -1,10 +1,10 @@
 package com.nationalParkApp.demo.Repository;
 
-import com.nationalParkApp.demo.Model.User;
+import com.nationalParkApp.demo.Model.Customer;
 import jakarta.persistence.Id;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Id> {
+public interface UserRepository extends CrudRepository<Customer, Id> {
 
-    User findByUsername(String username);
+    Customer findByUsername(String username);
 }

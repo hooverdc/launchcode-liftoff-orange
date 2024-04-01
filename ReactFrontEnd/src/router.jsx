@@ -5,6 +5,7 @@ import Favorites from './Components/Favorites.jsx'
 import App from './App.jsx'
 import Register from './Components/Register.jsx'
 import { createBrowserRouter } from 'react-router-dom'
+import Login from './Components/Login.jsx'
 
 export const router = createBrowserRouter([
     { path: "/", element: <App /> },
@@ -12,5 +13,6 @@ export const router = createBrowserRouter([
     { path: "/parksearch", element: <ParkSearch /> },
     { path: "/favorites", element: <Favorites />},
     { path: "/itinerary", element: <Itinerary /> },
-    { path: "/register", element: <Register /> }
+    { path: "/register", element: <Register /> },
+    { path: "/login", element: <Login />}
   ]); 
