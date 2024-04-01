@@ -39,6 +39,10 @@ const CreateReview = () => {
     });
   };
 
+  /*This is supposed to be the page you go to when you are at the park you searched
+  for page and click on an add review button. So hopefully we can figure out a way to 
+  import a park name and code or id from the search page.*/
+
   return (
     <>
       <Header />
