@@ -1,6 +1,6 @@
-package com.nationalParkApp.demo.controllers;
+package com.nationalParkApp.demo.Controller;
 
-import com.nationalParkApp.demo.model.Review;
+import com.nationalParkApp.demo.Model.Review;
 import com.nationalParkApp.demo.service.ReviewService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

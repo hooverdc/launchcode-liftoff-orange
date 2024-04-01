@@ -1,4 +1,4 @@
-package com.nationalParkApp.demo.model;
+package com.nationalParkApp.demo.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

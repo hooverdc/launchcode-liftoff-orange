@@ -1,6 +1,6 @@
 package com.nationalParkApp.demo.service;
 
-import com.nationalParkApp.demo.model.Review;
+import com.nationalParkApp.demo.Model.Review;
 
 import java.util.List;
 

@@ -1,10 +1,9 @@
 package com.nationalParkApp.demo.service;
 
 import com.nationalParkApp.demo.entity.ReviewEntity;
-import com.nationalParkApp.demo.model.Review;
+import com.nationalParkApp.demo.Model.Review;
 import com.nationalParkApp.demo.repository.ReviewRepository;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

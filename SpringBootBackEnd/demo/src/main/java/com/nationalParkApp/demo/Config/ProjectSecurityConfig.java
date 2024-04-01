@@ -22,8 +22,8 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        //.requestMatchers("/itinerary", "/review").authenticated()
-                        .requestMatchers( "/register").permitAll())
+                        //.requestMatchers("/itinerary", "/createReview").authenticated()
+                        .requestMatchers( "/register", "/createReview").permitAll())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
         return http.build();
