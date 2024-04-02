@@ -17,6 +17,7 @@ const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 
 
+
 //finds x # ('num') of pictures by string ('searchTerm')
 let searchTerm = 'overlook';
 let num = 5;
@@ -27,5 +28,5 @@ let parkCode = "arch";
 const getParks=axios.get(parkBaseURL+"/parks?parkCode="+parkCode+"&api_key="+api_key);
 
 export default{
-    getImages,getParks
+    getImages,getParks,
 }

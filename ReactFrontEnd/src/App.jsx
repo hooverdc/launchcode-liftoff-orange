@@ -8,6 +8,7 @@ import Itinerary from './Components/Itinerary';
 import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import CreateReview from './Components/CreateReview'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -15,21 +16,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    // <>
-    //   <Header />
-    //   <Slideshow />
-    //   <h1>THIS IS THE HOME PAGE</h1>
-    // </>
-
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route element={<ParkSearch />} />
-        <Route element={<Favorites />} />
-        <Route element={<Itinerary />} />
-      </Routes>
-    </BrowserRouter>
-
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/createreview" element={<CreateReview />} />
+          <Route path="/parksearch" element={<ParkSearch />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/itineraty" element={<Itinerary />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
