@@ -2,7 +2,8 @@ import React, {useRef, useEffect} from 'react';
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context'
-import "./SearchForm.css";
+//import "./SearchForm.css";
+import './SearchHeader.css'
 
 const SearchForm = () => {
 
@@ -12,16 +13,16 @@ const SearchForm = () => {
 
   useEffect(() => searchText.current.focus(), []);
   const handleSubmit = (e) => {
-    e.preventDefault(); //prevents only yellowstone showing up
+    e.preventDefault(); //actually allows the search not just hte defualt
     let tempSearchTerm = searchText 
     if(tempSearchTerm.length === 0){
-      setSearchTerm("yellowstone park"); //defualt searchterm
+      setSearchTerm("yellowstone"); //defualt searchterm
 
     } else {
       setSearchTerm(searchText.current.value);
     }
 
-    navigate("/parksearch/searchlist");
+    navigate("/parksearch/search");
   };
 
   //^^^what makes the button clickable
@@ -36,7 +37,7 @@ const SearchForm = () => {
           <div className='search-form-elem flex flex-sb bg-white'>
             <input type = "text" className='form-control' placeholder='Yellowstone Park ...' ref = {searchText}/>
             <button type = "submit" className='flex flex-c' onClick={handleSubmit}>
-              <FaSearch className='text-green' size = {32} />
+              <FaSearch className='text-black' size = {32} />
             </button>
           </div>
         </form>

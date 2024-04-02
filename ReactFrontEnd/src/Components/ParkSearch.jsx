@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchHeader from './SearchHeader'
 import { Outlet } from 'react-router-dom'
+import './SearchHeader.css'
 
 const ParkSearch = () => {
   return (

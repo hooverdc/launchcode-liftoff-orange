@@ -12,7 +12,7 @@ const AppContext = React.createContext();
      const [resultName, setResultName] = useState("");
 
      const fetchSearches = useCallback(async() => {
-         setLoading(true);
+         
         try{
     
             const response = await fetch(URL+"/parks?limit=50&q="+searchTerm+"&api_key="+api_key);
@@ -45,12 +45,10 @@ const AppContext = React.createContext();
                 setSearch([]);
                 setResultName("No Search Result Found!");
             }
-            setLoading(false);
 
 
         } catch(error){
             console.log(error);
-            setLoading(false);
         }
      }, [searchTerm]);
 

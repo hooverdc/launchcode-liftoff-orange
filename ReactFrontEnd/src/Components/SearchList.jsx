@@ -2,7 +2,8 @@ import React from 'react';
 import { useGlobalContext } from '../context';
 import Search from "./Search";
 import coverImg from "../images/photo2.jpg";
-import "./SearchList.css";
+//import "./SearchList.css";
+import './SearchHeader.css'
 
 const SearchList = () => {
   const {searches, resultName} = useGlobalContext();
