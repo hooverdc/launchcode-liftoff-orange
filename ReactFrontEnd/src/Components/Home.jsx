@@ -8,8 +8,6 @@ import Header from './Header'
 function Home() {
   return (
     <>
-        <Header />
-        <Slideshow />
         <h1>THIS IS THE HOME PAGE</h1>
     </>
   )

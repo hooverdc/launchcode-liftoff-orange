@@ -31,11 +31,11 @@ function Header() {
             icon:HiMagnifyingGlass,
             path:'/parksearch'
         },
-        {
-            name:'FAVORITES',
-            icon:HiStar,
-            path:'/favorites'
-        },
+        // {
+        //     name:'FAVORITES',
+        //     icon:HiStar,
+        //     path:'/favorites'
+        // },
         {
             name:'REGISTER',
             icon:HiUser,

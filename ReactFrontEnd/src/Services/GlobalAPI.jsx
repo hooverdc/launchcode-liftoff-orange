@@ -13,13 +13,9 @@ import axios from "axios";
 const parkBaseURL="https://developer.nps.gov/api/v1"
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
-//parks?parkCode=arch&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk
-
-
-
 //finds x # ('num') of pictures by string ('searchTerm')
 let searchTerm = 'overlook';
-let num = 5;
+let num = 6;
 const getImages=axios.get(parkBaseURL+"/multimedia/galleries/assets?limit="+num+"&q="+searchTerm+"&api_key="+api_key);
 
 //finds park by parkCode ('parkCode')

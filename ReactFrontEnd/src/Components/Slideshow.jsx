@@ -15,29 +15,18 @@ function Slideshow() {
     }
     
     const myArray = picList.map(item => item.fileInfo.url);
-    // console.log("new array is:");
-    // console.log(myArray[0]);
-
-
 
     return (
-        // ### PREVIOUS SLIDE SHOW ITERATION ###
-        // <div className="flex overflow-x-auto  w-full px-10 py-2 ">       
-        //     {picList.map((item,index)=>(
-                
-        //         <img src={item.fileInfo.url} 
-        //         className="min-w-full h-[310px] object-cover object-left-top mr-5 rounded-sm"/>
-        //     ))}
-        // 
-        // </div>
-        //### END OF OLD SLIDE SHOW ###
 
         //this div renders slide show using images from "picList". Interval can be changed 
-        //by altering 'slideInterval'. Prev/next image buttons are hidden with leftControl
+        //by altering 'slideInterval' (milliseconds). # of images keyword for image search can
+        // be adjusted by altering getImages in GlobalAPI.jsx. 
+        //Prev/next image buttons are hidden with leftControl
         //and rightControl set to non-breaking space...delete those props to make them visible
+
         <>
         <div className="h-80 px-5 py-2">
-            <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;" className="">
+            <Carousel slideInterval={3500} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;" className="">
                 {picList.map((item) => (
                     <img src={item.fileInfo.url} className="min-w-full"/>
                 ))}

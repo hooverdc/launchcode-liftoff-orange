@@ -6,8 +6,6 @@ import Header from './Header'
 function Favorites() {
   return (
     <>
-        {/* <Header /> */}
-        {/* <Slideshow /> */}
         <h1>THIS IS THE FAVORITES PAGE</h1>
     </>
   )

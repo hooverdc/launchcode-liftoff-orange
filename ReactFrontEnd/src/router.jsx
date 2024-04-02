@@ -11,15 +11,15 @@ import { createBrowserRouter } from 'react-router-dom'
 export const router = createBrowserRouter([
   
     // { path: "/", element: <App /> },
-    { path: "/", element: <Header />, errorElement: <ErrorPage />,
-      children: [
-        { path: "register", element: <Register /> },
-        { path: "parksearch", element: <ParkSearch /> },
-        { path: "/favorites", element: <Favorites />},
-        { path: "/itinerary", element: <Itinerary /> },
-      ],
+    // { path: "/", element: <Header />, errorElement: <ErrorPage />,
+    //   children: [
+    //     { path: "register", element: <Register /> },
+    //     { path: "parksearch", element: <ParkSearch /> },
+    //     { path: "/favorites", element: <Favorites />},
+    //     { path: "/itinerary", element: <Itinerary /> },
+    //   ],
   
-    },
+    // },
     
     
   ]); 
