@@ -27,7 +27,7 @@ const SearchList = () => {
         <div className='searchlist-content grid'>
           {
             //limits search and shows results
-            parksWithCovers.slice(0, 3).map((item, index) => {
+            parksWithCovers.slice(0, 20).map((item, index) => {
               return (
                 <Search key = {index} {...item} />
               )
