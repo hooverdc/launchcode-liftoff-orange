@@ -9,7 +9,9 @@ import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
 import { AppProvider } from './context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
+
 
 // ### ORIGINAL BEFORE ROUTER ###
 // This page is being used as "home" page
