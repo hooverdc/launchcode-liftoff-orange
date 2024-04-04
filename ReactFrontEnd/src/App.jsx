@@ -7,8 +7,10 @@ import Home from './Components/Home';
 import Itinerary from './Components/Itinerary';
 import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
+import { AppProvider } from './context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CreateReview from './Components/CreateReview'
+import SearchList from './Components/SearchList'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -16,18 +18,50 @@ import CreateReview from './Components/CreateReview'
 
 function App() {
   return (
+
     <>
-      <BrowserRouter>
+    <AppProvider>
+    <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/createreview" element={<CreateReview />} />
-          <Route path="/parksearch" element={<ParkSearch />} />
+          {/* <Route path="/createreview" element={<CreateReview />} /> */}
+          {/* <Route path="/parksearch" element={<ParkSearch />} /> */}
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/itineraty" element={<Itinerary />} />
-        </Routes>
+          <Route path="/itinerary" element={<Itinerary />} />          <Route path = "/parksearch" element = {<ParkSearch />} >
+            <Route path = "/parksearch/search" element = {<SearchList />} />
+          </Route>        </Routes>
       </BrowserRouter>
+      </AppProvider>
     </>
+
+    // <>
+    
+    //   <Home />
+    //   <ParkSearch />
+    //   <Favorites />
+    //   <Itinerary />
+    //   <SearchList />
+
+    // </>
+
+    // <>
+    //   <Header />
+    //   <Slideshow />
+    //   <h1>THIS IS THE HOME PAGE</h1>
+    // </>
+    // <AppProvider>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route index element={<Home />} />
+    //     <Route element={<ParkSearch />} />
+    //     <Route element={<Favorites />} />
+    //     <Route element={<Itinerary />} />
+    //     <Route element={<SearchList />} />
+    //   </Routes>
+    // </BrowserRouter>
+    // </AppProvider>
+
   )
 }
 
