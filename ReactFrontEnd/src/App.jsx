@@ -18,14 +18,30 @@ function App() {
   return (
 
     <>
-    
-      <Home />
-      <ParkSearch />
-      <Favorites />
-      <Itinerary />
-      <SearchList />
-
+    <AppProvider>
+    <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          {/* <Route path="/createreview" element={<CreateReview />} /> */}
+          {/* <Route path="/parksearch" element={<ParkSearch />} /> */}
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/itinerary" element={<Itinerary />} />          <Route path = "/parksearch" element = {<ParkSearch />} >
+            <Route path = "/parksearch/search" element = {<SearchList />} />
+          </Route>        </Routes>
+      </BrowserRouter>
+      </AppProvider>
     </>
+
+    // <>
+    
+    //   <Home />
+    //   <ParkSearch />
+    //   <Favorites />
+    //   <Itinerary />
+    //   <SearchList />
+
+    // </>
 
     // <>
     //   <Header />

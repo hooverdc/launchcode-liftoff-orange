@@ -30,18 +30,24 @@ import { AppProvider } from './context'
 import SearchList from './Components/SearchList'
 
 
-const root = ReactDOM.createRoot(document.getElementById('root')).render(
+// const root = ReactDOM.createRoot(document.getElementById('root')).render(
  
-  <AppProvider>
-  <BrowserRouter>
-    <Routes>
-        <Route path= "/" element= { <Home /> } />
-        <Route path= "/favorites" element= {<Favorites />} />
-        <Route path= "/itinerary" element= { <Itinerary /> } />
-        <Route path = "/parksearch" element = {<ParkSearch />} >
-        <Route path = "/parksearch/search" element = {<SearchList />} /> 
-        </Route>
-    </Routes>
-  </BrowserRouter>
-  </AppProvider>
-)
+//   <AppProvider>
+//   <BrowserRouter>
+//     <Routes>
+//         <Route path= "/" element= { <Home /> } />
+//         <Route path= "/favorites" element= {<Favorites />} />
+//         <Route path= "/itinerary" element= { <Itinerary /> } />
+//         <Route path = "/parksearch" element = {<ParkSearch />} >
+//         <Route path = "/parksearch/search" element = {<SearchList />} /> 
+//         </Route>
+//     </Routes>
+//   </BrowserRouter>
+//   </AppProvider>
+//)
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+) 
