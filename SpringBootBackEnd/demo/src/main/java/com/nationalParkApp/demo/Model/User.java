@@ -8,8 +8,8 @@ import lombok.EqualsAndHashCode;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Table(name="customers")
-public class Customer extends AbstractEntity {
+@Table(name="users")
+public class User extends AbstractEntity {
 
     private String username;
     private String password;

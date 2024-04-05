@@ -1,6 +1,6 @@
 package com.nationalParkApp.demo.Controller;
 
-import com.nationalParkApp.demo.Model.Customer;
+import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,13 +22,13 @@ public class LoginController {
 
     @PostMapping("/register")
     @CrossOrigin(origins = "http://localhost:5173")
-    public ResponseEntity<String> registerUser(@RequestBody Customer user) {
-        Customer savedUser = null;
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        User savedUser = null;
         ResponseEntity response = null;
         try {
             String hashward = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashward);
-            savedUser = (Customer) userRepository.save(user);
+            savedUser = (User) userRepository.save(user);
             if (savedUser.getId()>0) {
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
