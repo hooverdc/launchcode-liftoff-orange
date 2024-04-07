@@ -5,7 +5,7 @@ import './SearchHeader.css'
 
 const Search = (search) => {
 
-  console.log(search.activities);
+  // console.log(search.activities);
   return (
     <div className='search-item flex flex-column flex-sb'>
       <div className='search-item-img'>

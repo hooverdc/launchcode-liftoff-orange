@@ -22,7 +22,7 @@ function Register() {
 
   return (<>
     <Header />
-    <Slideshow />
+    {/* <Slideshow /> */}
 
     <form onSubmit={handleSubmit}>
       <input

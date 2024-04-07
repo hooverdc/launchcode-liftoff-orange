@@ -7,7 +7,7 @@ function Favorites() {
   return (
     <>
         <Header />
-        <Slideshow />
+        {/* <Slideshow /> */}
         <h1>THIS IS THE FAVORITES PAGE</h1>
     </>
   )

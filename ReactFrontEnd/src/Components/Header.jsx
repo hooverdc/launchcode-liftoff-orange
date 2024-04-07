@@ -52,16 +52,16 @@ function Header() {
                 {/* this nav bar is visible ONLY when screen width 
                 is OVER 7## px wide  */}
                 <div className="hidden md:flex gap-8">
-                    {menu.map((item)=>(
-                    <HeaderItem name={item.name} Icon={item.icon} path={item.path}/>
+                    {menu.map((item, idx)=>(
+                    <HeaderItem key={idx} name={item.name} Icon={item.icon} path={item.path}/>
                     ))}
                 </div>
                 
                 {/* this nav bar is visible ONLY when screen width 
                 is UNDER 7## px wide */}
                 <div className="flex md:hidden gap-5">
-                    {menu.map((item)=>(
-                    <HeaderItem name={item.name} Icon={item.icon} path={item.path}/>
+                    {menu.map((item, idx)=>(
+                    <HeaderItem key={idx} name={item.name} Icon={item.icon} path={item.path}/>
                     ))}
                 </div>
             
@@ -80,7 +80,7 @@ function Header() {
 
             {/* this is just a placeholder for an icon that could be used for the user's profile
             which is located in the nav bar, but outside of the other nav links*/}
-                <div><HiUser size={23} coloer="white"/></div>
+                <div><HiUser size={23} color="white"/></div>
             </div>
         </div>
 

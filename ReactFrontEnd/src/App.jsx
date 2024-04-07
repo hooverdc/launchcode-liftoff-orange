@@ -11,6 +11,7 @@ import { AppProvider } from './context';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
+import ParkDetails from './Components/ParkDetails'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -28,9 +29,12 @@ function App() {
           {/* <Route path="/createreview" element={<CreateReview />} /> */}
           {/* <Route path="/parksearch" element={<ParkSearch />} /> */}
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/itinerary" element={<Itinerary />} />          <Route path = "/parksearch" element = {<ParkSearch />} >
-            <Route path = "/parksearch/search" element = {<SearchList />} />
-          </Route>        </Routes>
+          <Route path="/itinerary" element={<Itinerary />} />          
+          <Route path = "/parksearch" element = {<ParkSearch />} >
+            <Route path = "search" element = {<SearchList />} />
+          </Route> 
+          <Route path="/parksearch/search/:parkCode" element={<ParkDetails/>} />
+        </Routes>
       </BrowserRouter>
       </AppProvider>
     </>

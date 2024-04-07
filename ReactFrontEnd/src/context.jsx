@@ -1,56 +1,72 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useCallback } from "react";
+import { useQuery } from '@tanstack/react-query'
+import axios from "axios";
+
 const URL = "https://developer.nps.gov/api/v1";
 const api_key="Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk"
 
 
 const AppContext = React.createContext();
 
- const AppProvider = ({children}) => {
-     const [searchTerm, setSearchTerm] = useState("yellowstone");
-     const [searches, setSearch] = useState([]);
-     const [resultName, setResultName] = useState("");
+const AppProvider = ({children}) => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searches, setSearch] = useState([]);
+    const [resultName, setResultName] = useState("");
 
-     const fetchSearches = useCallback(async() => {
+    const fetchSearches = useCallback(
+        
+        async() => {
          
-        try{
-    
-            const response = await fetch(URL+"/parks?limit=50&q="+searchTerm+"&api_key="+api_key);
-            const changeName = await response.json();
-            const {data} = changeName;
+            try{
+                
+                const response = await fetch(URL+"/parks?limit=50&q="+searchTerm+"&api_key="+api_key);
+                const changeName = await response.json();
+                const {data} = changeName;
 
-            console.log(data);
+                //### Tests for react-query ###
+                // const myParkData = changeName.data
+                // console.log("PARK SEARCH DATA PARK SEARCH DATA PARK SEARCH DATA PARK SEARCH DATA PARK SEARCH DATA ")
+                // console.log(myParkData);
 
-            if(data){
-                const newSearch = data.map((searchSingle) => {
-                    const {parkCode, fullName, states, activities, images} = searchSingle; 
+                //### Tests for sessionStorage ###
 
-                    return {
-                        parkCode: parkCode, //this is suposed to help me with the park details page
-                        fullName: fullName,
-                        states: states,
-                        activities: activities,
-                        cover_id: images[0].url
+                if(data){
+                    const newSearch = data.map((searchSingle) => {
+                        const {parkCode, fullName, states, activities, images, description, weatherInfo, designation} = searchSingle; 
+
+                        return {
+                            parkCode: parkCode, //this is suposed to help me with the park details page
+                            fullName: fullName,
+                            states: states,
+                            activities: activities,
+                            cover_id: images[0].url,
+                            description: description,
+                            allImages: images,
+                            weather: weatherInfo,
+                            designation: designation
+                        }
+                    });
+
+                    setSearch(newSearch);
+
+                    if(newSearch.length > 1){
+                        setResultName("Your Search Result");
+                    } else {
+                        setResultName("No Search Result Found!")
                     }
-                });
-
-                setSearch(newSearch);
-
-                if(newSearch.length > 1){
-                    setResultName("Your Search Result");
                 } else {
-                    setResultName("No Search Result Found!")
+                    setSearch([]);
+                    setResultName("No Search Result Found!");
                 }
-            } else {
-                setSearch([]);
-                setResultName("No Search Result Found!");
+
+
+            } catch(error){
+                console.log(error);
             }
+        }, [searchTerm]);
 
-
-        } catch(error){
-            console.log(error);
-        }
-     }, [searchTerm]);
+    
 
     useEffect(() => {
         fetchSearches();
@@ -64,6 +80,8 @@ const AppContext = React.createContext();
         </AppContext.Provider>
     )
  }
+
+
 
 export const useGlobalContext = () => {
     return useContext(AppContext);
