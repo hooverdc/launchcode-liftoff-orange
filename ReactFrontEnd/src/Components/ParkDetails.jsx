@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Header from './Header';
 import { useGlobalContext } from '../context';
@@ -17,6 +17,7 @@ function ParkDetails() {
 
     const singlePark = searches.find(park => park.parkCode === useParams().parkCode)
 
+const navigate = useNavigate();   
     
   return (
     <>
@@ -56,9 +57,11 @@ function ParkDetails() {
             })}
         </div>
         <div name="button group" className="flex justify-center">
-            <button className="mx-20 bg-green-600">Favorite</button>
-            <button className="mx-20 bg-green-600">Add Review</button>
-            <button className="mx-20 bg-green-600">Plan Your Visit</button>
+            <button className="mx-20 bg-green-700 hover:bg-green-900 font-semibold text-amber-950">Favorite</button>
+            <button className="mx-20 bg-green-700 hover:bg-green-900 font-semibold text-amber-950"
+            onClick={() => navigate("/createreview")}
+            >Add Review</button>
+            <button className="mx-20 bg-green-700 hover:bg-green-900 font-semibold text-amber-950">Plan Your Visit</button>
 
         </div>
 
