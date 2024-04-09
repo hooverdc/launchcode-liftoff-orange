@@ -50,6 +50,14 @@ public class ProjectSecurityConfig {
                                 .requestMatchers("/register", "/createreview").permitAll())
                         .formLogin(Customizer.withDefaults())
                         .httpBasic(Customizer.withDefaults());
+// =======
+//         http.csrf((csrf) -> csrf.disable())
+//                 .authorizeHttpRequests((requests) -> requests
+//                         //.requestMatchers("/itinerary", "/createReview").authenticated()
+//                         .requestMatchers( "/register", "/createReview").permitAll())
+//                 .formLogin(Customizer.withDefaults())
+//                 .httpBasic(Customizer.withDefaults());
+// >>>>>>> main
         return http.build();
     }
 
