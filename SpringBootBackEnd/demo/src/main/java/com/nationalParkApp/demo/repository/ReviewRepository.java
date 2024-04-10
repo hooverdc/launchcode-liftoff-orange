@@ -1,4 +1,4 @@
-package com.nationalParkApp.demo.repository;
+package com.nationalParkApp.demo.Repository;
 
 import com.nationalParkApp.demo.entity.ReviewEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -9,7 +9,6 @@ import Favorites from './Components/Favorites';
 import Itinerary from './Components/Itinerary';
 import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/react-query'
 //import Root from "./routes/root";
-//import { router } from './router';
 
 export const queryClient = new QueryClient({})
 
