@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Header from "./Header";
 import ReviewServices from "../Services/ReviewServices"
+import { queryClient } from "../main";
 
+const singlePark = queryClient.getQueryData(['rqSinglePark'])
 
 const CreateReview = () => {
   const [review, setReview] = useState({

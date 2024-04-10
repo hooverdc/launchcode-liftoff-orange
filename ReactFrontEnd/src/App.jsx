@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
 import ParkDetails from './Components/ParkDetails'
+import Register from './Components/Register'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -29,8 +30,9 @@ function App() {
           <Route path="/createreview" element={<CreateReview />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/itinerary" element={<Itinerary />} />          
+          <Route path = "/register" element = {<Register />} />
           <Route path = "/parksearch" element = {<ParkSearch />} >
-            <Route path = "search" element = {<SearchList />} />
+           <Route path = "search" element = {<SearchList />} />
           </Route> 
           <Route path="/parksearch/search/:parkCode" element={<ParkDetails/>} />
         </Routes>
@@ -38,33 +40,7 @@ function App() {
       </AppProvider>
     </>
 
-    // <>
-    
-    //   <Home />
-    //   <ParkSearch />
-    //   <Favorites />
-    //   <Itinerary />
-    //   <SearchList />
-
-    // </>
-
-    // <>
-    //   <Header />
-    //   <Slideshow />
-    //   <h1>THIS IS THE HOME PAGE</h1>
-    // </>
-    // <AppProvider>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route index element={<Home />} />
-    //     <Route element={<ParkSearch />} />
-    //     <Route element={<Favorites />} />
-    //     <Route element={<Itinerary />} />
-    //     <Route element={<SearchList />} />
-    //   </Routes>
-    // </BrowserRouter>
-    // </AppProvider>
-
+  
   )
 }
 

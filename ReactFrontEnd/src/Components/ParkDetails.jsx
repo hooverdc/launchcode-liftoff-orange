@@ -23,7 +23,7 @@ const navigate = useNavigate();
     <>
 
     <Header />
-    <div name="details" className="bg-gray-500 pt-10 pb-20 mt-10 mx-10 mb-20 rounded-md">
+    <div name="details" className="bg-gray-400 pt-10 pb-20 mt-10 mx-10 mb-20 rounded-md">
         <div name="title">
             <div><h1 className="underline underline-offset-4 px-5 py-5">{singlePark.fullName}</h1></div>
             
