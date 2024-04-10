@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
 import ParkDetails from './Components/ParkDetails'
+import Register from './Components/Register'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -26,13 +27,14 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/createreview" element={<CreateReview />} /> */}
+          <Route path="/createreview" element={<CreateReview />} /> 
           {/* <Route path="/parksearch" element={<ParkSearch />} /> */}
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/itinerary" element={<Itinerary />} />          
-          <Route path = "/parksearch" element = {<ParkSearch />} >
-            <Route path = "search" element = {<SearchList />} />
-          </Route> 
+          <Route path = "/parksearch" element = {<ParkSearch />} />
+          <Route path = "/searchlist" element = {<SearchList />} />
+          <Route path = "/register" element = {<Register/>} />
+          <Route/> 
           <Route path="/parksearch/search/:parkCode" element={<ParkDetails/>} />
         </Routes>
       </BrowserRouter>
