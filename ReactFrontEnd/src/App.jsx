@@ -26,45 +26,18 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/createreview" element={<CreateReview />} /> */}
+          <Route path="/createreview" element={<CreateReview />} />
           {/* <Route path="/parksearch" element={<ParkSearch />} /> */}
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/itinerary" element={<Itinerary />} />          
           <Route path = "/parksearch" element = {<ParkSearch />} >
             <Route path = "search" element = {<SearchList />} />
           </Route> 
-          <Route path="/parksearch/search/:parkCode" element={<ParkDetails/>} />
+          <Route path="/parksearch/search/:parkcode" element={<ParkDetails/>} />
         </Routes>
       </BrowserRouter>
       </AppProvider>
     </>
-
-    // <>
-    
-    //   <Home />
-    //   <ParkSearch />
-    //   <Favorites />
-    //   <Itinerary />
-    //   <SearchList />
-
-    // </>
-
-    // <>
-    //   <Header />
-    //   <Slideshow />
-    //   <h1>THIS IS THE HOME PAGE</h1>
-    // </>
-    // <AppProvider>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route index element={<Home />} />
-    //     <Route element={<ParkSearch />} />
-    //     <Route element={<Favorites />} />
-    //     <Route element={<Itinerary />} />
-    //     <Route element={<SearchList />} />
-    //   </Routes>
-    // </BrowserRouter>
-    // </AppProvider>
 
   )
 }

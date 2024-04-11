@@ -6,8 +6,14 @@ import { queryClient } from '../main'
 
 function Itinerary() {
 
-  // const data = queryClient.getQueryData(['someparks'])
-  // const parksFound = queryClient.getQueryData(['parksFound'])
+//used for react query testing
+// const data = queryClient.getQueryData(["someparks"])
+// const singlePark = queryClient.getQueryData(["singlePark"])
+// // const parksFound = queryClient.getQueryData(['parksFound'])
+// console.log("HERE IS THE REACT QUERY CACHED DATA FROM HOME")
+// console.log(data)
+// console.log("HERE IS THE REACT QUERY CACHED DATA FROM PARK DETAILS")
+// console.log(data)
   
   return (
     <>

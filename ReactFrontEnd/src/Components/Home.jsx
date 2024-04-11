@@ -8,13 +8,13 @@ import axios from 'axios'
 
 function Home() {
   
-  //### THIS ONE WORKS ### 
+  // // ### USED FOR TESTING ### 
   // const queryClient = useQueryClient();
   // const { data, error, isLoading, status } = useQuery({
   //   queryKey: ["someparks"],
   //   queryFn: () =>
   // //     // fetch("https://developer.nps.gov/api/v1/parks?q=a&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk").then((res) => res.json()),
-  //     axios.get("https://developer.nps.gov/api/v1/parks?q=blue&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk").then((response) => (response.data.data))
+  //     axios.get("https://developer.nps.gov/api/v1/parks?q=a&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk").then((response) => (response.data.data))
   // });
 
   // if (error) return <div>There was an error</div>;
