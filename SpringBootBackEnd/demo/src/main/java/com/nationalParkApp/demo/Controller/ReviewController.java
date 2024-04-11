@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1/")
 public class ReviewController {
@@ -25,7 +24,7 @@ public class ReviewController {
         return reviewService.createReview(review);
     }
 
-    @GetMapping("/?")
+    @GetMapping("/reviews")
     public List<Review> getAllReviews() {
         return reviewService.getAllReviews();
     }

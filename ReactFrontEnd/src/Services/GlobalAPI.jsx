@@ -1,22 +1,11 @@
-{/* KW - 3/23/24 */}
-/* API INFO BELOW 
-
-###########
-note the reference to the API KEY, stored as const api_key. Be sure to 
-uncomment the last line in .gitignore so file ".env" isnt pushed
-###########
-
-*/
-
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const parkBaseURL="https://developer.nps.gov/api/v1"
+const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 //parks?parkCode=arch&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk
-
-
-
 
 //finds x # ('num') of pictures by string ('searchTerm')
 let searchTerm = 'overlook';
@@ -25,7 +14,15 @@ const getImages=axios.get(parkBaseURL+"/multimedia/galleries/assets?limit="+num+
 
 //finds park by parkCode ('parkCode')
 let parkCode = "arch";
-const getParks=axios.get(parkBaseURL+"/parks?parkCode="+parkCode+"&api_key="+api_key);
+const getParks=axios.get(getParkInfoURL+parkCode+"&api_key="+api_key);
+
+
+// const carouselPics = useQuery({
+//     queryKey: ["getParks"],
+//     staleTime: 1200000,
+//     queryFn: axios.get(getParkInfoURL+"arch"+"&api_key="+api_key)
+// })
+
 
 export default{
     getImages,getParks,

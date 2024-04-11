@@ -15,8 +15,6 @@ function Slideshow() {
     }
     
     const myArray = picList.map(item => item.fileInfo.url);
-    console.log("new array is:");
-    console.log(myArray[0]);
 
 
 
@@ -38,8 +36,8 @@ function Slideshow() {
         <>
         <div className="h-80 px-5 py-2">
             <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;">
-                {picList.map((item) => (
-                    <img src={item.fileInfo.url} className="min-w-full"/>
+                {picList.map((item, idx) => (
+                    <img key={idx}src={item.fileInfo.url} className="min-w-full"/>
                 ))}
             </Carousel>
         </div>

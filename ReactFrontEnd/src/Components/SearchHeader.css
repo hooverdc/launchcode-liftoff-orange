@@ -63,7 +63,7 @@
 
   /* images on search */
   img{
-    width: 100%;
+    width: 50%;
     display: block;
   }
 
@@ -78,12 +78,12 @@
   /* backgroud */ 
 
   /* searchbar background */
-.bg-pink{background-color: var(--pink-color);}
-.bg-purple{background-color: var(--green-color);}
-.bg-white{background-color: var(--white-color);}
+/* .bg-pink{background-color: var(--pink-color);} */
+/* .bg-black{background-color: var(--black-color);} */
+/* .bg-white{background-color: var(--white-color);} */
 
 /* text */
- .text-black{color: var(--black-color);}
+.text-black{color: var(--black-color);}
 .text-white{color: var(--white-color);}
 .text-purple{color: var(--green-color);}
 .text-light-black{color: var(--light-black-color);}
@@ -141,4 +141,64 @@
   font-weight: 600;
   text-transform: uppercase;
   padding: 18px 0 24px 0;
+}
+
+/* searchform */
+
+.search-form{
+  width: 100%;
+  max-width: 680px;
+}
+.search-form-elem{
+  padding: 1.4rem 2.8rem;
+  border-radius: 3.8rem;
+}
+.search-form-elem .form-control{
+  font-size: 2rem;
+  padding: 0.6rem;
+}
+/* .search-form-elem .form-control::placeholder{
+  opacity: 0.9;
+} */
+
+/* searchlist */
+
+.searchlist{
+  padding: 3rem 0;
+  background-color: #f8f9fa;
+}
+.searchlist-content{
+  gap: 3rem;
+}
+.search-item{
+  padding: 3rem 2rem;
+  border-radius: 4px;
+  background-color: var(--white-color);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px 0px;
+  transition: var(--transition);
+}
+.search-item:hover{
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.search-item-img img{
+  /* max-width: 180px; */
+  margin-right: auto;
+  margin-left: auto;
+}
+.search-item-info{
+  margin-top: 2rem;
+}
+.search-item-info-item.parkname{
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+.search-item-info-item.activities{
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.search-item-info-item.state{
+  opacity: 0.6;
+  font-style: italic;
+  font-size: 14px;
 }
