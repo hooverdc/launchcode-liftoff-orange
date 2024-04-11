@@ -61,19 +61,19 @@ const CreateReview = () => {
   return (
     <>
       <Header />
-      <div className="h-full">
+      <div className="h-full bg-gray-400 mx-10 my-20 pt-10 pb-4">
         
-        <div className="flex justify-center">
-          <h1 className="flex font-semibold">Create a review for {parkDetails.name}</h1>
+        <div className="flex justify-center px-5 py-4">
+          <h1 className="flex underline underline-offset-4 text-amber-950">Create a review for {parkDetails.name}</h1>
         </div>
         
-        <div name="image" className="h-full">
+        <div name="image" className="h-full pt-20">
           <img src={parkDetails.images[0].url} className="" />
         </div>
         
-        <div className="flex-col justify-center">
+        <div className="flex flex-col items-center">
           <div className="justify-center pt-6">
-            <label className="font-semibold">Describe your visit:</label>
+            <label className="font-semibold text-2xl">Describe your visit:</label>
           </div>
 
           <div className="justify-center pt-6">
@@ -87,7 +87,7 @@ const CreateReview = () => {
           </div>
         </div>
 
-        <div className="flex justify-center space-x-10 pt-6">
+        <div className="flex justify-center space-x-10 py-6">
           <button className=" bg-green-700 hover:bg-green-900 font-semibold text-amber-950" onClick={saveReview}>
             Submit
           </button>
