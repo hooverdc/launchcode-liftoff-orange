@@ -5,7 +5,7 @@ import Header from './Header'
 import axios from 'axios';
 
 function Register() {
-  const [user, setUser] = useState({username: "", password: ""});
+  const [user, setUser] = useState({username: "", password: "", role: "user"});
 
   const handleSubmit = (event) => {
     event.preventDefault();
