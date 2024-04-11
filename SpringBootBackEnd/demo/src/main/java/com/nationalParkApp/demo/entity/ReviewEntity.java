@@ -11,7 +11,7 @@ public class ReviewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String parkcode;
+    private String parkCode;
     private String content;
 
 }

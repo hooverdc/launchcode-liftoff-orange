@@ -12,6 +12,4 @@ public class Review {
     private String parkCode;
     private String content;
 
-    public Review(long id, String content) {
-    }
 }
