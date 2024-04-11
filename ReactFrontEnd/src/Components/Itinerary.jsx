@@ -51,9 +51,8 @@ const saveItinerary = (e) => {
     e.preventDefault();
     setItinerary({
       id: "",
-      startDate: "",
-      endDate: "",
-      stayLength: "",
+      startDate: new Date(),
+      endDate: new Date(),
     });
   };
   
@@ -74,6 +73,7 @@ const saveItinerary = (e) => {
                 <p className='font-semibold'>Trip Start date:</p>
                 <DatePicker
                   showIcon
+                  toggleCalendarOnIconClick
                   selected={itinerary.startDate}
                   selectsStart
                   startDate={startDate}
@@ -86,6 +86,7 @@ const saveItinerary = (e) => {
                 <p className='font-semibold'>Trip End date:</p>
                 <DatePicker
                   showIcon
+                  toggleCalendarOnIconClick
                   selected={itinerary.endDate}
                   selectsEnd
                   startDate={startDate}
@@ -103,7 +104,7 @@ const saveItinerary = (e) => {
 
               <button className="bg-red-700 hover:bg-red-900 font-semibold text-amber-950" 
                 onClick={reset}>
-                Clear
+                Reset
               </button>
             </div>
       </div>
