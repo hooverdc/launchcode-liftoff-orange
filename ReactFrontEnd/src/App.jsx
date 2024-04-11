@@ -28,12 +28,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/createreview" element={<CreateReview />} />
-          {/* <Route path="/parksearch" element={<ParkSearch />} /> */}
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/itinerary" element={<Itinerary />} /> 
           <Route path="/register" element={<Register />} />
           <Route path = "/parksearch" element = {<ParkSearch />} >
-            <Route path = "search" element = {<SearchList />} />
+           <Route path = "search" element = {<SearchList />} />
           </Route> 
           <Route path="/parksearch/search/:parkcode" element={<ParkDetails/>} />
 

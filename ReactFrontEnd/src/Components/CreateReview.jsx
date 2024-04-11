@@ -4,17 +4,21 @@ import Header from "./Header";
 import ReviewServices from "../Services/ReviewServices"
 import { queryClient } from "../main";
 
+
 const CreateReview = () => {
-  const [review, setReview] = useState({
-    id: "",
-    content: "",
-  });
 
   //fetches react query cached data
   const singlePark = queryClient.getQueryData(["singlePark"])
 
   //breaks down JSON into single park object
   const parkDetails = singlePark.data[0]
+
+  const [review, setReview] = useState({
+    id: "",
+    parkCode: parkDetails.parkCode,
+    content: "",
+  });
+  
 
   //confirms above declarations in console // remove if not needed for testing
   console.log("HERE IS THE REACT QUERY CACHED DATA FROM PARK DETAILS")
@@ -37,15 +41,14 @@ const CreateReview = () => {
       })
       .catch((error) => {
         console.log(error)
-      });
-    
-    
+      });  
   };
 
   const reset = (e) => {
     e.preventDefault();
     setReview({
       id: "",
+      parkCode: parkDetails.parkCode,
       content: "",
     });
   };
@@ -58,33 +61,41 @@ const CreateReview = () => {
   return (
     <>
       <Header />
-      <div className="container">
-      <div className="flex justify-center">
-        <h1 className="font-semibold">Create a review for {parkDetails.fullName}</h1>
-      </div>
-      <div className="flex justify-center pt-6">
-        <label className="font-semibold">Describe your visit:</label>
-      </div>
+      <div className="h-full bg-gray-400 mx-10 my-20 pt-10 pb-4">
+        
+        <div className="flex justify-center px-5 py-4">
+          <h1 className="flex underline underline-offset-4 text-amber-950">Create a review for {parkDetails.name}</h1>
+        </div>
+        
+        <div name="image" className="h-full pt-20">
+          <img src={parkDetails.images[0].url} className="" />
+        </div>
+        
+        <div className="flex flex-col items-center">
+          <div className="justify-center pt-6">
+            <label className="font-semibold text-2xl">Describe your visit:</label>
+          </div>
 
-      <div className="flex justify-center pt-6">
-        <textarea
-          name="content"
-          value={review.content}
-          onChange={(e) => handleChange(e)}
-          rows={10}
-          cols={100}
-        ></textarea>
-      </div>
+          <div className="justify-center pt-6">
+            <textarea
+              name="content"
+              value={review.content}
+              onChange={(e) => handleChange(e)}
+              rows={10}
+              cols={100}
+            ></textarea>
+          </div>
+        </div>
 
-      <div className="flex justify-center space-x-10 pt-6">
-        <button className=" bg-green-700 hover:bg-green-900 font-semibold text-amber-950" onClick={saveReview}>
-          Submit
-        </button>
+        <div className="flex justify-center space-x-10 py-6">
+          <button className=" bg-green-700 hover:bg-green-900 font-semibold text-amber-950" onClick={saveReview}>
+            Submit
+          </button>
 
-        <button className="bg-red-700 hover:bg-red-900 font-semibold text-amber-950" onClick={reset}>
-          Clear
-        </button>
-      </div>
+          <button className="bg-red-700 hover:bg-red-900 font-semibold text-amber-950" onClick={reset}>
+            Clear
+          </button>
+        </div>
       </div>
     </>
   );
