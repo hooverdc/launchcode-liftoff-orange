@@ -7,6 +7,7 @@ import { queryClient } from "../main";
 const CreateReview = () => {
   const [review, setReview] = useState({
     id: "",
+    parkCode: parkDetails.parkCode,
     content: "",
   });
 
@@ -46,6 +47,7 @@ const CreateReview = () => {
     e.preventDefault();
     setReview({
       id: "",
+      parkCode: parkDetails.parkCode,
       content: "",
     });
   };
@@ -60,7 +62,7 @@ const CreateReview = () => {
       <Header />
       <div className="container">
       <div className="flex justify-center">
-        <h1 className="font-semibold">Create a review for {parkDetails.fullName}</h1>
+        <h1 className="font-semibold">Create a review for {parkDetails.name}</h1>
       </div>
       <div className="flex justify-center pt-6">
         <label className="font-semibold">Describe your visit:</label>

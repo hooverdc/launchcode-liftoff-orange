@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
 import ParkDetails from './Components/ParkDetails'
+import Register from './Components/Register'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
