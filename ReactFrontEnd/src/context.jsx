@@ -36,15 +36,15 @@ const AppProvider = ({children}) => {
                         const {parkCode, fullName, states, activities, images, description, weatherInfo, designation} = searchSingle; 
 
                         return {
-                            parkCode: parkCode, //this is suposed to help me with the park details page
-                            fullName: fullName,
+                            parkcode: parkCode, //this is suposed to help me with the park details page
+                            fullname: fullName,
                             states: states,
                             activities: activities,
                             cover_id: images[0].url,
                             description: description,
-                            allImages: images,
+                            allimages: images,
                             weather: weatherInfo,
-                            designation: designation
+                            designation: designation,
                         }
                     });
 

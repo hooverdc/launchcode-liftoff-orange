@@ -12,9 +12,9 @@ const Search = (search) => {
         <img src = {search.cover_id} alt = "photo" />
       </div>
      <div className='search-item-info text-center'>
-        <Link to = {`${search.parkCode}`} {...search}>
+        <Link to = {`${search.parkcode}`} {...search}>
           <div className='search-item-info-item parkname fw-7 fs-18'>
-            <span>{search.fullName}</span>
+            <span>{search.fullname}</span>
           </div>
         </Link>
         {/* //this displaces the park name and makes it a link to go to a new page */}
