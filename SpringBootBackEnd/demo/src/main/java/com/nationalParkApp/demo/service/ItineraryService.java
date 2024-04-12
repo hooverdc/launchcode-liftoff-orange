@@ -1,6 +1,6 @@
 package com.nationalParkApp.demo.service;
 
-import com.nationalParkApp.demo.model.Itinerary;
+import com.nationalParkApp.demo.Model.Itinerary;
 import org.springframework.stereotype.Service;
 
 @Service

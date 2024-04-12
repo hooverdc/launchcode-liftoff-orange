@@ -3,7 +3,7 @@ package com.nationalParkApp.demo.service;
 
 import com.nationalParkApp.demo.Repository.ItineraryRepository;
 import com.nationalParkApp.demo.entity.ItineraryEntity;
-import com.nationalParkApp.demo.model.Itinerary;
+import com.nationalParkApp.demo.Model.Itinerary;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

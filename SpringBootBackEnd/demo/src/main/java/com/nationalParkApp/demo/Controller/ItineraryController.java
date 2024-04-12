@@ -1,6 +1,6 @@
 package com.nationalParkApp.demo.Controller;
 
-import com.nationalParkApp.demo.model.Itinerary;
+import com.nationalParkApp.demo.Model.Itinerary;
 import com.nationalParkApp.demo.service.ItineraryService;
 import org.springframework.web.bind.annotation.*;
 
