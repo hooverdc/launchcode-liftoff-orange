@@ -10,7 +10,9 @@ function Itinerary() {
 
 //used for react query testing
 // const data = queryClient.getQueryData(["someparks"])
-// const singlePark = queryClient.getQueryData(["singlePark"])
+const singlePark = queryClient.getQueryData(["singlePark"])
+
+const parkDetails = singlePark.data[0]
 // // const parksFound = queryClient.getQueryData(['parksFound'])
 // console.log("HERE IS THE REACT QUERY CACHED DATA FROM HOME")
 // console.log(data)
@@ -25,7 +27,7 @@ const [itinerary, setItinerary] = useState({
   id: "",
   startDate: new Date(),
   endDate: new Date(),
-  stayLength: "",
+  parkCode: parkDetails.parkCode,
 });
 
 const navigate = useNavigate();
@@ -53,21 +55,18 @@ const saveItinerary = (e) => {
       id: "",
       startDate: new Date(),
       endDate: new Date(),
+      parkCode: "",
     });
   };
   
   return (
     <>
-        <Header />
-        {/* <Slideshow /> */}
-        <h1>THIS IS THE ITINERARY PAGE</h1>
-        {/* {console.log("IMPORT PARKS INFO")}
-        {console.log(data)}
-        {console.log(parksFound)} */}
-
-      <div>
+      <Header />
+        
+      <div className='bg-gray-400 pt-10 pb-4 mt-10 mx-10 mb-20'>
+              
               <div>
-                <h1 className='font-semibold'>Create Itinerary for ?</h1>
+                <h1 className='underline underline-offset-4 px-5 py-4 text-amber-950'>Create Itinerary for {parkDetails.name}</h1>
               </div>
               <div>
                 <p className='font-semibold'>Trip Start date:</p>
