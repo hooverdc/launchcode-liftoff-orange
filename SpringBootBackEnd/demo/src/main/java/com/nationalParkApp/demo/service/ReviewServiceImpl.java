@@ -34,7 +34,8 @@ public class ReviewServiceImpl implements ReviewService{
 
         List<Review> reviews = reviewEntities.stream().map(rev -> new Review(
                 rev.getId(),
-                rev.getContent()))
+                rev.getContent(),
+                rev.getParkCode()))
                 .collect(Collectors.toList());
         return reviews;
     }
