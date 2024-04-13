@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Header from './Header';
@@ -6,6 +6,8 @@ import { useGlobalContext } from '../context';
 import { Carousel } from 'flowbite-react';
 import {useQuery, useQueryClient} from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
@@ -14,6 +16,7 @@ function ParkDetails() {
     const [singlePark, setPark] = useState([]);
     const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
+    const mapRef = useRef(null);
 
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
@@ -70,7 +73,25 @@ function ParkDetails() {
     // .then(response=>setPark(response.data.data))
 //########################
 
-  return (
+    const testPark = data.data[0];
+    const position =[Number(testPark.latitude), Number(testPark.longitude)]
+
+    function MapMaker({coords}) {
+        return (
+            <div className="flex justify-center h-5/6 m-5">
+                <MapContainer center={coords} zoom={13} ref={mapRef} className=" w-3/4 h-96" >
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                </MapContainer>
+            </div> 
+        )
+    }
+
+
+
+    return (
     <>
     <Header />
     <div className="h-full bg-gray-400 pt-10 pb-4 mt-10 mx-10 mb-20 rounded-md">
@@ -117,6 +138,9 @@ function ParkDetails() {
             <button className="bg-yellow-300 rounded-3xl">Add to favorites</button>
             <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Review</button></Link>
             <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Create Itinereary</button></Link>
+        </div>
+        <div>
+            <MapMaker coords={position} />
         </div>
     </div>
     </>
