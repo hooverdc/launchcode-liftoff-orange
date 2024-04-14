@@ -24,6 +24,6 @@ const getParks=axios.get(getParkInfoURL+parkCode+"&api_key="+api_key);
 // })
 
 
-export default{
+export default {
     getImages,getParks,
 }
