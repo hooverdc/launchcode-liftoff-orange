@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState, useRef } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Header from './Header';
 import { useGlobalContext } from '../context';
 import { Carousel } from 'flowbite-react';
 import {useQuery, useQueryClient} from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
@@ -14,6 +16,7 @@ function ParkDetails() {
     const [singlePark, setPark] = useState([]);
     const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
+    const mapRef = useRef(null);
 
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
@@ -22,14 +25,13 @@ function ParkDetails() {
     const { data, error, isLoading, status } = useQuery({
     queryKey: ["singlePark"],
     queryFn: () =>
-
+     
         fetch("https://developer.nps.gov/api/v1/parks?parkCode="+parkId+"&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk").then((res) => res.json())
 
     });
     
     if (error) return <div>There was an error</div>;
     if (isLoading) return <div>DATA IS LOADING...</div>
-
 
 //#############################
 //WORKING WITH FRESH API CALLS
@@ -45,17 +47,17 @@ function ParkDetails() {
                 // axios.get(getParkInfoURL+parkCode+"&api_key="+api_key).then((response) => {
                     // setPark(response.data.data[0])
                     // setPark(response.data.data)
-                    // console.log(singlePark)
+                    // console.log(singlePark)         
                     // setPark(response.data.data[0])
                     // console.log("singlePark is: " + singlePark)
-                    // });
+                    // });     
     //     } catch (error) {
     //         console.log("Error: ", error)
     //     }
     // }
 //###############################
 
-// ###############################
+//###############################
     //Working, turned off for testing
     // const singlePark = searches.find(park => park.parkCode === useParams().parkCode)
     // console.log(parkCode)
@@ -70,36 +72,104 @@ function ParkDetails() {
     // .then(response=>setPark(response.data.data))
 //########################
 
-  return (
+    //initialize single park object
+    const parkInfo = data.data[0];
+
+    //intialize lat/long from Park (not "addresses")
+    const latlong =[Number(parkInfo.latitude), Number(parkInfo.longitude)]
+
+    // console.log("CONTACTS")
+    const phone = parkInfo.contacts.phoneNumbers[0].phoneNumber
+
+    //template for phone number formatting
+    let newPhone = "(xxx) xxx-xxxx"
+
+    for(let i=0; i<phone.length; i++) {
+        newPhone = newPhone.replace("x", phone[i]);
+    }
+
+    //initializes collection of addresses
+    const addresses = [parkInfo.addresses]
+
+    //separates physical addresses into new array
+    const physicalAddresses = [];
+
+    for(let i=0; i<addresses.length; i++) {
+        for(let j=0; j<addresses[i].length; j++) {
+            if(addresses[i][j].type == "Physical") {
+                physicalAddresses.push(addresses[i][j])
+            }
+        }
+    }
+
+    const markerAddress = {
+        name: parkInfo.fullName,
+        street: physicalAddresses[0].line1,
+        city: physicalAddresses[0].city,
+        state: physicalAddresses[0].stateCode,
+        zip: physicalAddresses[0].postalCode,
+    }
+
+    //creates map marker on map
+    function POI({coords}) {
+        return (
+            <Marker position={coords}>
+                <Popup className="font-bold text-lg">
+                    <div className="flex flex-col items-center">
+                        <div>{markerAddress.name}</div>
+                        <div>{markerAddress.street}</div>
+                        <div>{markerAddress.city}, {markerAddress.state} {markerAddress.zip}</div>
+                    </div>
+                </Popup>
+            </Marker>
+        )
+    }
+
+    //creates map
+    function MapMaker({coords}) {
+        return (
+            <div className="flex justify-center h-1/2 m-5">
+                <MapContainer center={coords} zoom={9} ref={mapRef} scrollWheelZoom={false} className="w-3/4 h-screen rounded-xl" >
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <POI coords={latlong} />
+                </MapContainer>
+            </div>
+        )
+    }
+
+    return (
     <>
     <Header />
     <div className="h-full bg-gray-400 pt-10 pb-4 mt-10 mx-10 mb-20 rounded-md">
         <div name="title" className="flex flex-col items-center">
-            <div><h1 className="underline underline-offset-4 px-5 py-4">{data.data[0].fullName}</h1></div>
+            <div><h1 className="underline underline-offset-4 px-5 py-4">{parkInfo.fullName}</h1></div>
             <div name="designation" className="flex px-2">
                 <div className="underline underline-offset-2 px-3">Designation: </div>
-                <div>{data.data[0].designation}</div>
+                <div>{parkInfo.designation}</div>
             </div>
             <div name="states" className="flex px-2">
                 <div className="underline underline-offset-2 px-3">States:</div>
-                <div>{data.data[0].states}</div>
+                <div>{parkInfo.states}</div>
             </div>
         </div>
 
         <div name="images" className=" h-svh">
             <Carousel slide={false} className="">
-                {data.data[0].images.map((image, idx) => (
+                {parkInfo.images.map((image, idx) => (
                 <img key={idx} src={image.url} className=""/>
                 ))}
             </Carousel>
-        </div>
+        </div>    
         
-        <div name="description" className="px-40 py-10">{data.data[0].description}</div>
-        <div name="weather" className="px-40 py-10"><p className="underline underline-offset-2">Weather: </p>{data.data[0].weatherInfo}</div>
+        <div name="description" className="px-40 py-10">{parkInfo.description}</div>
+        <div name="weather" className="px-40 py-10"><p className="underline underline-offset-2">Weather: </p>{parkInfo.weatherInfo}</div>
         
         <div name="activities" className="px-40 py-10"> 
             <p className="underline underline-offset-2">Activities:</p>
-            {data.data[0].activities.map((activity) => {
+            {parkInfo.activities.map((activity) => {
             return activity.name + ", "
             })}
         </div>
@@ -107,20 +177,23 @@ function ParkDetails() {
         <div name="contact-info" className="bg-green-600  my-20 py-5 w-1/2 flex flex-col items-center mx-auto rounded-2xl">
             <div><p>Contact Info</p></div>
             <div>
-                <p>place holder text</p>
-                <p>place holder text</p>
+                <p>{parkInfo.contacts.emailAddresses[0].emailAddress}</p>
+                <p>{newPhone}</p>
                 <p>place holder text</p>
             </div>
         </div>
-
+        
         <div name="button group" className="flex justify-evenly">
             <button className="bg-yellow-300 rounded-3xl">Add to favorites</button>
             <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Review</button></Link>
             <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Create Itinereary</button></Link>
         </div>
+        <div name="map">
+            <MapMaker coords={latlong} />
+        </div>
     </div>
     </>
-    )
+    ) 
 }
 
 export default ParkDetails

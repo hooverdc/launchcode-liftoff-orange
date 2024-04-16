@@ -61,7 +61,7 @@ const CreateReview = () => {
   return (
     <>
       <Header />
-      <div className="h-full bg-gray-400 mx-10 my-20 pt-10 pb-4">
+      <div className="h-full bg-gray-400 mx-10 my-20 pt-10 pb-4"> 
         
         <div className="flex justify-center px-5 py-4">
           <h1 className="flex underline underline-offset-4 text-amber-950">Create a review for {parkDetails.name}</h1>
@@ -96,7 +96,7 @@ const CreateReview = () => {
             Clear
           </button>
         </div>
-      </div>
+      </div> 
     </>
   );
 };
