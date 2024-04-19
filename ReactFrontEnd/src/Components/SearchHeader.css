@@ -5,6 +5,7 @@
     min-height: 75vh;
     background: linear-gradient(rgba(27, 141, 75, 0.3), rgba(24, 151, 52, 0.5)), url("../images/photo1.jpg") center/cover no-repeat;
     flex-direction: column;
+    background-attachment: fixed; 
 }
 .search-header-title{
     font-size: 4.2rem;
