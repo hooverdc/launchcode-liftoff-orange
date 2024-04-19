@@ -8,18 +8,55 @@ import {useQuery, useQueryClient} from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import FavoritesServices from '../Services/FavoritesServices';
 
 const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 function ParkDetails() {
     const [singlePark, setPark] = useState([]);
+    const [toggle, setToggle] = useState(false);
     const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
     const mapRef = useRef(null);
 
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
+
+    const [favorites, setFavorites] = useState({
+        id: "",
+        //userId: "",
+        parkCode: parkId,
+    });
+    
+    useEffect(() => {
+        FavoritesServices.getFavorites().then((response) => {
+            const parkCodes = [];
+            console.log(response);
+            const parkObjsRes = response.data
+            parkObjsRes.map(res => res.parkCode);
+            console.log(parkObjsRes);
+            
+            for (let i = 0; i < parkObjsRes.length; i++) {
+                parkCodes.push(parkObjsRes[i].parkCode)
+            } console.log(parkCodes);
+
+            if (parkCodes.includes(parkId)) {setToggle(true)}
+            setFavorites({...favorites, parkCode: parkId });
+            console.log(favorites);
+        });
+    }, [setToggle]);
+
+
+    const saveToFavorites = () => {
+        FavoritesServices.addToFavorites(favorites)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
 
     // //below uses react query to make an API call, which is then accessible to review & itinerary pages via (['singlePark'])
     const { data, error, isLoading, status } = useQuery({
@@ -184,7 +221,13 @@ function ParkDetails() {
         </div>
         
         <div name="button group" className="flex justify-evenly">
-            <button className="bg-yellow-300 rounded-3xl">Add to favorites</button>
+        {toggle?
+            <button className="bg-yellow-500 rounded-3xl" 
+                >Favorited</button>
+            :
+            <button className="bg-yellow-300 rounded-3xl" 
+                onClick={saveToFavorites}>Add to favorites</button>
+            }
             <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Review</button></Link>
             <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Create Itinereary</button></Link>
         </div>
