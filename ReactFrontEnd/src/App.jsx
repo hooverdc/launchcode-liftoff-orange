@@ -13,6 +13,7 @@ import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
 import ParkDetails from './Components/ParkDetails'
 import Register from './Components/Register'
+import Footer from './Components/Footer'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -39,6 +40,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       </AppProvider>
+      <Footer />
     </>
 
   )
