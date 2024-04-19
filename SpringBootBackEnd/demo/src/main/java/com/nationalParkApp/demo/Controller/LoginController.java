@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginController {
@@ -21,7 +18,6 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         User savedUser = null;
         ResponseEntity response = null;
@@ -40,5 +36,12 @@ public class LoginController {
                     .body("AN exception occurred due to " + ex.getMessage());
         }
         return response;
+    }
+
+    @RequestMapping("/user")
+    public ResponseEntity<String> loginUser () {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body("Given user details are successfully registered");
     }
 }
