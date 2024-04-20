@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class Favorites {
+
     private long id;
     private String parkCode;
-    private String content;
 }
