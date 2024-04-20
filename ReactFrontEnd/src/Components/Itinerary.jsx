@@ -62,54 +62,59 @@ const saveItinerary = (e) => {
   return (
     <>
       <Header />
-        
-      <div className='bg-gray-400 pt-10 pb-4 mt-10 mx-10 mb-20'>
-              
-              <div>
-                <h1 className='underline underline-offset-4 px-5 py-4 text-amber-950'>Create Itinerary for {parkDetails.name}</h1>
-              </div>
-              <div>
-                <p className='font-semibold'>Trip Start date:</p>
-                <DatePicker
-                  showIcon
-                  toggleCalendarOnIconClick
-                  selected={itinerary.startDate}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={(date) => handleChange('startDate', date)}
-                  name='startDate'
-                />
-              </div>
-              <div>
-                <p className='font-semibold'>Trip End date:</p>
-                <DatePicker
-                  showIcon
-                  toggleCalendarOnIconClick
-                  selected={itinerary.endDate}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate} 
-                  onChange={(date) => handleChange('endDate', date)}
-                  name='endDate'
-                />
-              </div>
-              <div className="flex justify-center space-x-10 pt-6">
-              <button className=" bg-green-700 hover:bg-green-900 font-semibold text-amber-950"
-                onClick={saveItinerary} >
-                Submit
-              </button>
 
-              <button className="bg-red-700 hover:bg-red-900 font-semibold text-amber-950" 
-                onClick={reset}>
-                Reset
-              </button>
-            </div>
+      <div className="bg-gray-400 pt-10 pb-4 mt-10 mx-10 mb-20">
+        <div>
+          <h1 className="underline underline-offset-4 px-5 py-4 text-amber-950">
+            Create Itinerary for {parkDetails.name}
+          </h1>
+        </div>
+        <div>
+          <p className="font-semibold">Trip Start date:</p>
+          <DatePicker
+            showIcon
+            toggleCalendarOnIconClick
+            selected={itinerary.startDate}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            onChange={(date) => handleChange("startDate", date)}
+            name="startDate"
+          />
+        </div>
+        <div>
+          <p className="font-semibold">Trip End date:</p>
+          <DatePicker
+            showIcon
+            toggleCalendarOnIconClick
+            selected={itinerary.endDate}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            onChange={(date) => handleChange("endDate", date)}
+            name="endDate"
+          />
+        </div>
+        <div className="flex justify-center space-x-10 pt-6">
+          <button
+            className=" bg-green-700 hover:bg-green-900 font-semibold text-amber-950"
+            onClick={saveItinerary}
+          >
+            Submit
+          </button>
+
+          <button
+            className="bg-red-700 hover:bg-red-900 font-semibold text-amber-950"
+            onClick={reset}
+          >
+            Reset
+          </button>
+        </div>
       </div>
-
     </>
-  )
+  );
 }
 
 export default Itinerary
