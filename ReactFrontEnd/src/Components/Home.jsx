@@ -5,6 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from 'axios'
+import BasicLogin from './BasicLogin'
 
 
 function Home() {
@@ -18,6 +19,7 @@ function Home() {
           <div className="text-center">"Welcome to Park Trippin'!</div>
           <div> Here, you'll effortlessly discover the natural wonders and serene beauty of our country's most cherished landscapes. Whether you seek rugged trails, tranquil lakes, or breathtaking vistas, embark on your next adventure with us. Start exploring, and let the journey to our nation's heart begin!</div>
         </div>
+        <BasicLogin /> 
       </div>
       
     </>

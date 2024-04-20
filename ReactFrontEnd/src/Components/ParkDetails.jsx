@@ -144,14 +144,17 @@ function ParkDetails() {
       }
     }
 
-    const markerAddress = {
-      name: parkInfo.fullName,
-      street: physicalAddresses[0].line1,
-      city: physicalAddresses[0].city,
-      state: physicalAddresses[0].stateCode,
-      zip: physicalAddresses[0].postalCode,
-    };
+    //defines label info for map marker
 
+    if (physicalAddresses[0]) {
+      const markerAddress = {
+        name: parkInfo.fullName,
+        street: physicalAddresses[0].line1,
+        city: physicalAddresses[0].city,
+        state: physicalAddresses[0].stateCode,
+        zip: physicalAddresses[0].postalCode,
+      };
+    }
     //creates map marker on map
     function POI({ coords }) {
       return (
