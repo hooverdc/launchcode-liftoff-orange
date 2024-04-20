@@ -1,11 +1,8 @@
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 
 const parkBaseURL="https://developer.nps.gov/api/v1"
 const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
-
-//parks?parkCode=arch&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk
 
 //finds x # ('num') of pictures by string ('searchTerm')
 let searchTerm = 'scenic';

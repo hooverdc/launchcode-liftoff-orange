@@ -61,14 +61,14 @@ function ParkDetails() {
         });
     };
 
-    // //below uses react query to make an API call, which is then accessible to review & itinerary pages via (['singlePark'])
-    const { data, error, isLoading, status } = useQuery({
+    //below uses react query to make an API call, which is then accessible to review & itinerary pages via (['singlePark'])
+    const { data, error, isLoading } = useQuery({
       queryKey: ["singlePark"],
       queryFn: () =>
         fetch(
           "https://developer.nps.gov/api/v1/parks?parkCode=" +
             parkId +
-            "&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk"
+            "&api_key=" + api_key 
         ).then((res) => res.json()),
     });
 
@@ -123,11 +123,20 @@ function ParkDetails() {
     // console.log("CONTACTS")
     const phone = parkInfo.contacts.phoneNumbers[0].phoneNumber;
 
-    //template for phone number formatting
-    let newPhone = "(xxx) xxx-xxxx";
 
-    for (let i = 0; i < phone.length; i++) {
-      newPhone = newPhone.replace("x", phone[i]);
+    let newPhone = "";
+
+    //parses unformatted phone numbers
+    if (phone.length > 10) {
+      newPhone = phone;
+    } else {
+
+      //template for phone number formatting
+      let newPhone = "(xxx) xxx-xxxx";
+
+      for (let i = 0; i < phone.length; i++) {
+        newPhone = newPhone.replace("x", phone[i]);
+      }
     }
 
     //initializes collection of addresses
@@ -136,20 +145,24 @@ function ParkDetails() {
     //separates physical addresses into new array
     const physicalAddresses = [];
 
-    for (let i = 0; i < addresses.length; i++) {
-      for (let j = 0; j < addresses[i].length; j++) {
-        if (addresses[i][j].type == "Physical") {
-          physicalAddresses.push(addresses[i][j]);
+    if (addresses.length = 1) {
+      physicalAddresses.push(addresses[0])
+    } else {
+      for (let i = 0; i < addresses.length; i++) {
+        for (let j = 0; j < addresses[i].length; j++) {
+          if (addresses[i][j].type == "Physical") {
+            physicalAddresses.push(addresses[i][j]);
+          }
         }
       }
     }
 
     const markerAddress = {
       name: parkInfo.fullName,
-      street: physicalAddresses[0].line1,
-      city: physicalAddresses[0].city,
-      state: physicalAddresses[0].stateCode,
-      zip: physicalAddresses[0].postalCode,
+      street: physicalAddresses[0][0].line1,
+      city: physicalAddresses[0][0].city,
+      state: physicalAddresses[0][0].stateCode,
+      zip: physicalAddresses[0][0].postalCode,
     };
 
     //creates map marker on map
@@ -247,7 +260,7 @@ function ParkDetails() {
             <div>
               <p>{parkInfo.contacts.emailAddresses[0].emailAddress}</p>
               <p>{newPhone}</p>
-              <p className="">place holder text</p>
+              {/* <p className="">place holder text</p> */}
             </div>
           </div>
 
