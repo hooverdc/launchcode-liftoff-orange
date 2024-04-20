@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Header from './Header';
+import Footer from './Footer';
 import { useGlobalContext } from '../context';
 import { Carousel } from 'flowbite-react';
 import {useQuery, useQueryClient} from '@tanstack/react-query';
@@ -16,7 +17,7 @@ function ParkDetails() {
     const [singlePark, setPark] = useState([]);
     const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
-    const mapRef = useRef(null);
+    const mapRef = useRef();
 
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
@@ -31,8 +32,8 @@ function ParkDetails() {
     });
     
     if (error) return <div>There was an error</div>;
-    if (isLoading) return <div>DATA IS LOADING...</div>
-
+    if (isLoading) return <div>DATA IS LOADING...</div>;
+ 
 //#############################
 //WORKING WITH FRESH API CALLS
 
@@ -80,28 +81,28 @@ function ParkDetails() {
 
     // console.log("CONTACTS")
     const phone = parkInfo.contacts.phoneNumbers[0].phoneNumber
-
+    
     //template for phone number formatting
     let newPhone = "(xxx) xxx-xxxx"
 
     for(let i=0; i<phone.length; i++) {
         newPhone = newPhone.replace("x", phone[i]);
     }
-
+    
     //initializes collection of addresses
     const addresses = [parkInfo.addresses]
-
+    
     //separates physical addresses into new array
     const physicalAddresses = [];
-
+    
     for(let i=0; i<addresses.length; i++) {
         for(let j=0; j<addresses[i].length; j++) {
             if(addresses[i][j].type == "Physical") {
                 physicalAddresses.push(addresses[i][j])
             }
-        }
+        }       
     }
-
+    
     const markerAddress = {
         name: parkInfo.fullName,
         street: physicalAddresses[0].line1,
@@ -129,21 +130,21 @@ function ParkDetails() {
     function MapMaker({coords}) {
         return (
             <div className="flex justify-center h-1/2 m-5">
-                <MapContainer center={coords} zoom={9} ref={mapRef} scrollWheelZoom={false} className="w-3/4 h-screen rounded-xl" >
+                <MapContainer center={coords} zoom={11} ref={mapRef} scrollWheelZoom={false} className="w-3/4 h-screen rounded-xl" >
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <POI coords={latlong} />
+                    <POI coords={latlong} />                  
                 </MapContainer>
-            </div>
+            </div> 
         )
     }
 
     return (
     <>
     <Header />
-    <div className="h-full bg-gray-400 pt-10 pb-4 mt-10 mx-10 mb-20 rounded-md">
+    <div className="h-full bg-nps-green-300 pt-20 pb-20 px-10 rounded-md">
         <div name="title" className="flex flex-col items-center">
             <div><h1 className="underline underline-offset-4 px-5 py-4">{parkInfo.fullName}</h1></div>
             <div name="designation" className="flex px-2">
@@ -156,8 +157,8 @@ function ParkDetails() {
             </div>
         </div>
 
-        <div name="images" className=" h-svh">
-            <Carousel slide={false} className="">
+        <div name="images" className="py-10 h-svh">
+            <Carousel slide={false} className=" shadow-2xl">
                 {parkInfo.images.map((image, idx) => (
                 <img key={idx} src={image.url} className=""/>
                 ))}
@@ -174,12 +175,12 @@ function ParkDetails() {
             })}
         </div>
 
-        <div name="contact-info" className="bg-green-600  my-20 py-5 w-1/2 flex flex-col items-center mx-auto rounded-2xl">
-            <div><p>Contact Info</p></div>
+        <div name="contact-info" className="bg-nps-green-600 drop-shadow-2xl  my-20 py-5 w-1/2 flex flex-col items-center text-center mx-auto rounded-2xl">
+            <div><p className="underline underline-offset-4 font-semibold">Park Contact Info</p></div>
             <div>
                 <p>{parkInfo.contacts.emailAddresses[0].emailAddress}</p>
                 <p>{newPhone}</p>
-                <p>place holder text</p>
+                <p className="">place holder text</p>
             </div>
         </div>
         
@@ -188,7 +189,7 @@ function ParkDetails() {
             <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Review</button></Link>
             <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Create Itinereary</button></Link>
         </div>
-        <div name="map">
+        <div name="map" className="pt-10 drop-shadow-2xl">
             <MapMaker coords={latlong} />
         </div>
     </div>

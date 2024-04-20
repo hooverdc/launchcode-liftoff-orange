@@ -24,11 +24,6 @@ const AppProvider = ({children}) => {
                 const changeName = await response.json();
                 const {data} = changeName;
 
-                //### Tests for react-query ###
-                // const myParkData = changeName.data
-                // console.log("PARK SEARCH DATA PARK SEARCH DATA PARK SEARCH DATA PARK SEARCH DATA PARK SEARCH DATA ")
-                // console.log(myParkData);
-
                 //### Tests for sessionStorage ###
 
                 if(data){
