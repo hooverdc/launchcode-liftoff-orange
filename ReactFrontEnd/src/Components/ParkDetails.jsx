@@ -213,9 +213,9 @@ function ParkDetails() {
           </div>
 
           <div name="images" className="py-10 h-svh">
-            <Carousel slide={false} className=" shadow-2xl">
+            <Carousel slide={false} className="">
               {parkInfo.images.map((image, idx) => (
-                <img key={idx} src={image.url} className="" />
+                <img key={idx} src={image.url} className="rounded-xl" />
               ))}
             </Carousel>
           </div>
