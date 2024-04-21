@@ -13,6 +13,7 @@ import CreateReview from './Components/CreateReview'
 import SearchList from './Components/SearchList'
 import ParkDetails from './Components/ParkDetails'
 import Register from './Components/Register'
+import Login from './Components/Login'
 import Footer from './Components/Footer'
 
 
@@ -33,8 +34,9 @@ function App() {
           <Route path="/itinerary" element={<Itinerary />} />
           <Route path="/register" element={<Register />} />
           <Route path = "/parksearch" element = {<ParkSearch />} >
-           <Route path = "search" element = {<SearchList />} />
-          </Route> 
+            <Route path = "search" element = {<SearchList />} />
+          </ Route>    
+          <Route path ="/login" element ={<Login />} />
           <Route path="/parksearch/search/:parkcode" element={<ParkDetails/>} />
         </Routes>
       </BrowserRouter>
