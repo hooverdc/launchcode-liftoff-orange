@@ -120,23 +120,19 @@ function ParkDetails() {
     //intialize lat/long from Park (not "addresses")
     const latlong = [Number(parkInfo.latitude), Number(parkInfo.longitude)];
 
-    // console.log("CONTACTS")
+    //initializes phone # for contact info
     const phone = parkInfo.contacts.phoneNumbers[0].phoneNumber;
 
-
-    let newPhone = "";
+    //template for phone number formatting
+    let newPhone = "(xxx) xxx-xxxx";
 
     //parses unformatted phone numbers
-    if (phone.length > 10) {
-      newPhone = phone;
-    } else {
-
-      //template for phone number formatting
-      let newPhone = "(xxx) xxx-xxxx";
-
+    if (phone.length == 10) {
       for (let i = 0; i < phone.length; i++) {
         newPhone = newPhone.replace("x", phone[i]);
       }
+    } else {
+      newPhone = phone;
     }
 
     //initializes collection of addresses

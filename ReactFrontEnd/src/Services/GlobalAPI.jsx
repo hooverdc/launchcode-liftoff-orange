@@ -5,7 +5,7 @@ const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 //finds x # ('num') of pictures by string ('searchTerm')
-let searchTerm = 'scenic';
+let searchTerm = 'overlook';
 let num = 10;
 const getImages=axios.get(parkBaseURL+"/multimedia/galleries/assets?limit="+num+"&q="+searchTerm+"&api_key="+api_key);
 
