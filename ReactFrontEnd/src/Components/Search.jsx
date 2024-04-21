@@ -7,7 +7,7 @@ const Search = (search) => {
 
   // console.log(search.activities);
   return (
-    <div className='search-item flex flex-column flex-sb'>
+    <div className='search-item flex flex-column flex-sb drop-shadow-2xl bg-nps-green-500'>
       <div className='search-item-img'>
         <img src = {search.cover_id} alt = "photo" />
       </div>

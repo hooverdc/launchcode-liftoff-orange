@@ -14,6 +14,8 @@ import SearchList from './Components/SearchList'
 import ParkDetails from './Components/ParkDetails'
 import Register from './Components/Register'
 import Login from './Components/Login'
+import Footer from './Components/Footer'
+
 
 // ### ORIGINAL BEFORE ROUTER ###
 // This page is being used as "home" page
@@ -29,17 +31,17 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/createreview" element={<CreateReview />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/itinerary" element={<Itinerary />} /> 
+          <Route path="/itinerary" element={<Itinerary />} />
           <Route path="/register" element={<Register />} />
           <Route path = "/parksearch" element = {<ParkSearch />} >
             <Route path = "search" element = {<SearchList />} />
           </ Route>    
           <Route path ="/login" element ={<Login />} />
           <Route path="/parksearch/search/:parkcode" element={<ParkDetails/>} />
-
         </Routes>
       </BrowserRouter>
       </AppProvider>
+      <Footer />
     </>
 
   )

@@ -61,14 +61,14 @@ const CreateReview = () => {
   return (
     <>
       <Header />
-      <div className="h-full bg-gray-400 mx-10 my-20 pt-10 pb-4">
-        
-        <div className="flex justify-center px-5 py-4">
+      {/* <div className="h-full bg-gray-400 mx-10 my-20 pt-10 pb-4"> */}
+      <div className="bg-nps-green-300 flex flex-col justify-center h-full">
+        <div className="flex justify-center px-5">
           <h1 className="flex underline underline-offset-4 text-amber-950">Create a review for {parkDetails.name}</h1>
         </div>
         
-        <div name="image" className="h-full pt-20">
-          <img src={parkDetails.images[0].url} className="" />
+        <div name="image" className=" p-20 flex justify-center">
+          <img src={parkDetails.images[0].url} className="rounded-xl drop-shadow-2xl" />
         </div>
         
         <div className="flex flex-col items-center">
@@ -76,8 +76,8 @@ const CreateReview = () => {
             <label className="font-semibold text-2xl">Describe your visit:</label>
           </div>
 
-          <div className="justify-center pt-6">
-            <textarea
+          <div className="justify-center pt-6 rounded-xl drop-shadow-2xl">
+            <textarea className="rounded-xl"
               name="content"
               value={review.content}
               onChange={(e) => handleChange(e)}

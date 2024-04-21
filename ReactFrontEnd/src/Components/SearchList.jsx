@@ -18,7 +18,7 @@ const SearchList = () => {
    //console.log(parksWithCovers);
 
   return (
-    <section className='searchlist'>
+    <section className='searchlist bg-nps-green-300'>
       <div className='container'>
         <div className='section-title'>
           <h2>{resultName}</h2>  

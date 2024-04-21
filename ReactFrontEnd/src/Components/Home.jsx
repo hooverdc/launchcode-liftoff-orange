@@ -2,32 +2,24 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Slideshow from './Slideshow'
 import Header from './Header'
+import Footer from './Footer'
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from 'axios'
 
 
 function Home() {
-  
-  // // ### USED FOR TESTING ### 
-  // const queryClient = useQueryClient();
-  // const { data, error, isLoading, status } = useQuery({
-  //   queryKey: ["someparks"],
-  //   queryFn: () =>
-  // //     // fetch("https://developer.nps.gov/api/v1/parks?q=a&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk").then((res) => res.json()),
-  //     axios.get("https://developer.nps.gov/api/v1/parks?q=a&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk").then((response) => (response.data.data))
-  // });
-
-  // if (error) return <div>There was an error</div>;
-  // if (isLoading) return <div>DATA IS LOADING...</div>
-
-  // console.log("DATA DATA DATA DATA DATA DATA DATA DATA DATA DATA ")
-  // console.log(data)
 
   return (
     <>
-      <Header />
-      <Slideshow />
-      <h1>THIS IS THE HOME PAGE</h1>
+      <div className="bg-nps-green-300 h-lvh">
+        <Header />
+        <Slideshow />
+        <div className="flex flex-col border border-nps-green-999 rounded-xl my-10 mx-auto p-6 lg:w-1/2">
+          <div className="text-center">"Welcome to Park Trippin'!</div>
+          <div> Here, you'll effortlessly discover the natural wonders and serene beauty of our country's most cherished landscapes. Whether you seek rugged trails, tranquil lakes, or breathtaking vistas, embark on your next adventure with us. Start exploring, and let the journey to our nation's heart begin!</div>
+        </div>
+      </div>
+      
     </>
   )
 }

@@ -42,6 +42,7 @@ public class ProjectSecurityConfig {
                 config.setMaxAge(3600L);
                 return config;
             }
+
         })).csrf((csrf) -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers( "/register","/user")
                                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                         .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
@@ -49,6 +50,7 @@ public class ProjectSecurityConfig {
 
                                 .requestMatchers("/api/v1/**").authenticated()
                                 .requestMatchers("/register","/user").permitAll())
+
                         .formLogin(Customizer.withDefaults())
                         .httpBasic(Customizer.withDefaults());
 // =======
