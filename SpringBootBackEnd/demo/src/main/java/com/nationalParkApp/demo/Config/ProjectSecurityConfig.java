@@ -47,7 +47,7 @@ public class ProjectSecurityConfig {
                         .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                         .authorizeHttpRequests((requests)->requests
 
-                                .requestMatchers("/api/v1/createreview").authenticated()
+                                .requestMatchers("/api/v1/**").authenticated()
                                 .requestMatchers("/register","/user").permitAll())
                         .formLogin(Customizer.withDefaults())
                         .httpBasic(Customizer.withDefaults());

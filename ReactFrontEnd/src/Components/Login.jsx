@@ -6,6 +6,7 @@ import axios from 'axios';
 import LoginService from '../Services/LoginService';
 const SERVER_API_BASE_URL = "http://localhost:8080/";
 const axiosInstance = axios.create({
+        withCredentials: true,
         baseURL: SERVER_API_BASE_URL,
         headers: {
         "Cache-Control": "no-cache",
@@ -15,7 +16,7 @@ const axiosInstance = axios.create({
         "Access-Control-Allow-Methods": "POST",
         "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
         "Authorization": null,
-        "X-XRSF-TOKEN": null
+        
         }});
 
 function Login() {

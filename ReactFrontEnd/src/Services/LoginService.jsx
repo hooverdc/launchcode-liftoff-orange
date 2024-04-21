@@ -14,7 +14,9 @@ class LoginService {
         instance.interceptors.request.use((config) => {
             const hash = window.btoa(user.username+":"+user.password);
             if (hash) {
-                instance.defaults.headers["Authorization"] = "Basic "+hash;
+                let authHeader = "Basic "+hash;
+                instance.defaults.headers["Authorization"] = authHeader;
+                window.localStorage.setItem("Auth", authHeader);
             }
             
         return config
@@ -23,7 +25,7 @@ class LoginService {
         
         instance.post("/user",user)
             .then((response) => {
-                localStorage.setItem("csrfToken", )
+                console.log(response);
             })
             
             
