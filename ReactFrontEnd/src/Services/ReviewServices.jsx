@@ -18,7 +18,6 @@ const axiosInstance = axios.create({
 
 class ReviewService {
     createReview(review) {
-        console.log(window.localStorage.getItem("Auth"));
         return axiosInstance.post(REVIEW_API_BASE_URL, review)
     }
 }

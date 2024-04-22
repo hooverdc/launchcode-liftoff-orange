@@ -39,9 +39,8 @@ public class LoginController {
     }
 
     @RequestMapping("/user")
-    public ResponseEntity<String> loginUser (@RequestBody User user) {
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body("Given user details are successfully registered");
-    }
+    public User loginUser (@RequestBody User user) {
+        return userRepository.findByUsername(user.getUsername());
+        }
+
 }
