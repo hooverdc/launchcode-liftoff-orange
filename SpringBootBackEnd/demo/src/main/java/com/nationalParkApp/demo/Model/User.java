@@ -20,5 +20,4 @@ public class User {
     private List<com.nationalParkApp.demo.Model.Review> reviews;
     private List<com.nationalParkApp.demo.Model.Favorites> favorites;
 
-
 }

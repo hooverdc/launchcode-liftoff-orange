@@ -42,13 +42,15 @@ public class ProjectSecurityConfig {
                 config.setMaxAge(3600L);
                 return config;
             }
-        })).csrf((csrf) -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers( "/register", "/api/v1/createreview", "/api/v1/favorites",
-                                "/api/v1/itinerary")
+
+        })).csrf((csrf) -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers( "/register","/user")
                                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                         .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                         .authorizeHttpRequests((requests)->requests
-                                //.requestMatchers("/itinerary").authenticated()
-                                .requestMatchers("/register", "/api/v1/createreview", "/api/v1/favorites", "/api/v1/itinerary").permitAll())
+
+                                .requestMatchers("/api/v1/**").authenticated()
+                                .requestMatchers("/register","/user").permitAll())
+
                         .formLogin(Customizer.withDefaults())
                         .httpBasic(Customizer.withDefaults());
 // =======
