@@ -62,7 +62,8 @@ const reset = (e) => {
     id: "",
     startDate: new Date(),
     endDate: new Date(),
-    parkCode: user,
+    parkCode: parkDetails.parkCode,
+    user: user,
   });
 };
 
