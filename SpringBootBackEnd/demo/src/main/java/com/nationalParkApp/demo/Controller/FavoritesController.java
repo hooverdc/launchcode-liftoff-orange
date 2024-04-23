@@ -1,6 +1,7 @@
 package com.nationalParkApp.demo.Controller;
 
 import com.nationalParkApp.demo.Model.Favorites;
+import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.service.FavoritesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1/")
 public class FavoritesController {
@@ -34,8 +36,13 @@ public class FavoritesController {
         return favoritesService.getAllFavorites();
     }
 
-    @DeleteMapping("/favorites")
-    public ResponseEntity<Object> deleteFavorite(@RequestBody Long id) {
+    @GetMapping("/favorites/user/{id}")
+    public List<Favorites> getAllFavoritesByUserId(@PathVariable Long id) {
+
+        return favoritesService.getAllByUserId(id);
+    }
+    @DeleteMapping("/favorites{id}")
+    public ResponseEntity<Object> deleteFavorite(@PathVariable Long id) {
         boolean deleted = false;
         deleted = favoritesService.deleteFromFavorites(id);
         Map<String, Boolean> response = new HashMap<>();

@@ -10,9 +10,9 @@ public interface ItineraryService {
 
     Itinerary createItinerary(Itinerary itinerary);
 
-    List<Itinerary> getAllItineraries();
-
     boolean deleteItinerary(Long id);
 
-    Itinerary updateItinerary(Long id, Itinerary itinerary);
+    List<Itinerary> getAllItinerariesByParkCode(String parkCode);
+
+    List<Itinerary> getAllItinerariesByUserId(Long id);
 }

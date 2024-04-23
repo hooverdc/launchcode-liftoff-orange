@@ -27,19 +27,6 @@ public class ItineraryServiceImpl implements ItineraryService {
     }
 
     @Override
-    public List<Itinerary> getAllItineraries() {
-        List<ItineraryEntity> itineraryEntities = itineraryRepository.findAll();
-
-        List<Itinerary> itineraries = itineraryEntities.stream().map(iti -> new Itinerary(
-                iti.getId(),
-                iti.getStartDate(),
-                iti.getEndDate(),
-                iti.getParkCode()))
-                .collect(Collectors.toList());
-        return itineraries;
-    }
-
-    @Override
     public boolean deleteItinerary(Long id) {
         ItineraryEntity itineraryEntity = itineraryRepository.findById(id).get();
         itineraryRepository.delete(itineraryEntity);
@@ -47,11 +34,28 @@ public class ItineraryServiceImpl implements ItineraryService {
     }
 
     @Override
-    public Itinerary updateItinerary(Long id, Itinerary itinerary) {
-        ItineraryEntity itineraryEntity = itineraryRepository.findById(id).get();
-        itineraryEntity.setStartDate(itinerary.getStartDate());
-        itineraryEntity.setEndDate(itinerary.getEndDate());
-        itineraryRepository.save(itineraryEntity);
-        return itinerary;
+    public List<Itinerary> getAllItinerariesByParkCode(String parkCode) {
+        List<ItineraryEntity> itineraryEntities = itineraryRepository.findByParkCode(parkCode);
+
+        List<Itinerary> itineraries = itineraryEntities.stream().map(iti -> new Itinerary(
+                        iti.getId(),
+                        iti.getStartDate(),
+                        iti.getEndDate(),
+                        iti.getParkCode()))
+                .collect(Collectors.toList());
+        return itineraries;
+    }
+
+    @Override
+    public List<Itinerary> getAllItinerariesByUserId(Long id) {
+        List<ItineraryEntity> itineraryEntities = itineraryRepository.findByUserId(id);
+
+        List<Itinerary> itineraries = itineraryEntities.stream().map(iti -> new Itinerary(
+                        iti.getId(),
+                        iti.getStartDate(),
+                        iti.getEndDate(),
+                        iti.getParkCode()))
+                .collect(Collectors.toList());
+        return itineraries;
     }
 }
