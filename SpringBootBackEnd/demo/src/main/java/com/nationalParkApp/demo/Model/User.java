@@ -19,5 +19,6 @@ public class User {
     private List<com.nationalParkApp.demo.Model.Itinerary> itineraries;
     private List<com.nationalParkApp.demo.Model.Review> reviews;
     private List<com.nationalParkApp.demo.Model.Favorites> favorites;
+    private String role = "user";
 
 }
