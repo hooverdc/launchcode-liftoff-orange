@@ -25,7 +25,7 @@ class LoginService {
         
         instance.post("/user",user)
             .then((response) => {
-                console.log(response);
+                window.localStorage.setItem("User", JSON.stringify(response));
             })
             
             
