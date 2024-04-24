@@ -34,12 +34,36 @@ public class FavoritesServiceImpl implements FavoritesService {
     }
 
     @Override
+    public List<Favorites> getAllByParkCode(String parkCode) {
+        List<FavoritesEntity> favoritesEntities = favoritesRepository.findByParkCode(parkCode);
+
+        List<Favorites> favorites = favoritesEntities.stream().map(fav -> new Favorites(
+                        fav.getId(),
+                        fav.getParkCode(),
+                        fav.getUser()))
+                .collect(Collectors.toList());
+        return favorites;
+    }
+
+    @Override
+    public List<Favorites> getAllByUserId(Long id) {
+        List<FavoritesEntity> favoritesEntities = favoritesRepository.findByUserId(id);
+
+        List<Favorites> favorites = favoritesEntities.stream().map(fav -> new Favorites(
+                        fav.getId(),
+                        fav.getParkCode()))
+                .collect(Collectors.toList());
+        return favorites;
+    }
+
+    @Override
     public List<Favorites> getAllFavorites() {
         List<FavoritesEntity> favoritesEntities = favoritesRepository.findAll();
 
         List<Favorites> favorites = favoritesEntities.stream().map(fav -> new Favorites(
                         fav.getId(),
-                        fav.getParkCode()))
+                        fav.getParkCode(),
+                        fav.getUser()))
                 .collect(Collectors.toList());
         return favorites;
     }

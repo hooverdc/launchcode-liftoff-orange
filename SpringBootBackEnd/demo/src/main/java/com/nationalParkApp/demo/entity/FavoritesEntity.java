@@ -1,5 +1,6 @@
 package com.nationalParkApp.demo.entity;
 
+import com.nationalParkApp.demo.Model.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,4 +13,11 @@ public class FavoritesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String parkCode;
+
+    @ManyToOne
+    @JoinTable(name = "user_favorites",
+            joinColumns = @JoinColumn(name = "favorites_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private UserEntity user;
 }

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1/")
 public class ReviewController {
@@ -19,17 +20,32 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @PostMapping("/createreview")
+    @PostMapping("/review")
     public Review createReview(@RequestBody Review review) {
         return reviewService.createReview(review);
     }
 
-    @GetMapping("/reviews")
+    @GetMapping("/review")
     public List<Review> getAllReviews() {
         return reviewService.getAllReviews();
     }
 
-    @DeleteMapping(path = "/editreview/{id}")
+    @GetMapping("/review/user{id}")
+    public List<Review> getAllReviewsByUserId(@PathVariable Long id) {
+        return reviewService.getAllReviewsByUserId(id);
+    }
+
+    @GetMapping("/review/parkcode{id}")
+    public List<Review> getAllReviewsByParkCode(@PathVariable String parkCode) { return reviewService.getAllReviewsByParkCode(parkCode); }
+
+    @GetMapping(path = "/review{id}")
+    public ResponseEntity<Review> getReviewById(@PathVariable Long id) {
+        Review review = null;
+        review = reviewService.getReviewById(id);
+        return ResponseEntity.ok(review);
+    }
+
+    @DeleteMapping(path = "/review/{id}")
     public ResponseEntity<Object> deleteReview(@PathVariable Long id) {
         boolean deleted = false;
         deleted = reviewService.deleteReview(id);
@@ -38,14 +54,7 @@ public class ReviewController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping(path = "/editreview/{id}")
-    public ResponseEntity<Review> getReviewById(@PathVariable Long id) {
-        Review review = null;
-        review = reviewService.getReviewById(id);
-        return ResponseEntity.ok(review);
-    }
-
-    @PutMapping(path = "/editreview/{id}")
+    @PutMapping(path = "/review/{id}")
     public ResponseEntity<Review> updateReview(@PathVariable Long id, @RequestBody Review review) {
         review = reviewService.updateReview(id, review);
         return ResponseEntity.ok(review);

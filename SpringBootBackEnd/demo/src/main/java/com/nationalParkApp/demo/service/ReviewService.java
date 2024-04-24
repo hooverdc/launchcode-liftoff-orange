@@ -9,6 +9,8 @@ public interface ReviewService {
 
     List<Review> getAllReviews();
 
+    List<Review> getAllReviewsByUserId(Long id);
+
     boolean deleteReview(Long id);
 
     Review getReviewById();

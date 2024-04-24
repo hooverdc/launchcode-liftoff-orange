@@ -2,14 +2,22 @@ import axios from "axios";
 
 const ITINERARY_API_BASE_URL = "http://localhost:8080/api/v1/itinerary";
 
-class ItineraryServices {
+class ItineraryServie {
   CreateItinerary(itinerary) {
     return axios.post(ITINERARY_API_BASE_URL, itinerary);
   }
 
-  GetAllReviews() {
-    return axios.post(ITINERARY_API_BASE_URL);
+  deleteItinerary(id) {
+    return axios.delete(ITINERARY_API_BASE_URL + "/" + id);
+  }
+
+  getItinerariesByParkCode(parkCode) {
+    return axios.get(ITINERARY_API_BASE_URL + "/" + "parkcode" + parkCode);
+  }
+
+  getItinerariesByUserId(id) {
+    return axios.get(ITINERARY_API_BASE_URL + "/" + "user" + id);
   }
 }
 
-export default new ItineraryServices();
+export default new ItineraryServie();
