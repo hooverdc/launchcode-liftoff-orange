@@ -2,6 +2,10 @@ package com.nationalParkApp.demo.Controller;
 
 import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.Repository.UserRepository;
+import com.nationalParkApp.demo.entity.UserEntity;
+import com.nationalParkApp.demo.service.UserService;
+import com.nationalParkApp.demo.service.UserServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class LoginController {
 
+    private UserService userService;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -19,12 +25,14 @@ public class LoginController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
-        User savedUser = null;
+        UserEntity savedUser = null;
         ResponseEntity response = null;
         try {
             String hashward = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashward);
-            savedUser = (User) userRepository.save(user);
+//            savedUser = (UserEntity) userRepository.save(user);
+                BeanUtils.copyProperties(user, savedUser);
+                userRepository.save(savedUser);
             if (savedUser.getId()>0) {
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)

@@ -1,17 +1,38 @@
 import React, { useState, useEffect } from 'react'
+import getFavoritesByUserId from '../Services/FavoritesServices'
 
-//create call to backend here to retrive user favorites 
+
 //store user favorites into variable, use in initial useState
 
 
 function UserFavorites() {
 
-    const [ userFavs, setUserFavs ] = useState([]);
+    const [ currentUser, setCurrentUser ] = useState([""]);
+    const [ userFavs, setUserFavs ] = useState([""]);
 
-//whenever a favorite park is deleted, useEffect needs to update the the collection of user's favorite parks and rerender the table of favorites
+
+    //this retrieves current user from localStorage
     useEffect(() => {
-        
-    },[])
+        const storedUser = localStorage.getItem('userId'); //'userId' may need to be updated to correct value in localStorage
+        if (storedUser) {
+            setCurrentUser(storedUser); 
+        } else {
+            console.log("Error: no user signed in");
+        }
+    }, [])
+
+    //create call to backend here to retrive user favorites 
+    useEffect(() => {
+        const currentFavorites = getFavoritesByUserId(currentUser);
+        setUserFavs(currentFavorites);
+    }, [userFavs])
+
+    //whenever a favorite park is deleted, useEffect needs to update the the collection of user's favorite parks and rerender the table of favorites
+    useEffect(() => {
+        //delete park
+        //setUserFavs to current listed favs
+        //rerender new list of favs (minus fav that was deleted)
+    },[userFavs])
 
     const handleClick = () => {
         //call to backend to delete park from favorite list
