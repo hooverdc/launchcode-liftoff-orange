@@ -5,10 +5,12 @@ import Header from './Header'
 import Footer from './Footer'
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from 'axios'
+import { states } from '../constants/Enum'
 
 
 function Home() {
-
+  
+console.log(states);
   return (
     <>
       <div className="bg-nps-green-300 h-lvh">

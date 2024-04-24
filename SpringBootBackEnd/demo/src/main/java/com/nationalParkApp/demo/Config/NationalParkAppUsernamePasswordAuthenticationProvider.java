@@ -2,6 +2,7 @@ package com.nationalParkApp.demo.Config;
 
 import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.Repository.UserRepository;
+import com.nationalParkApp.demo.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -28,7 +29,7 @@ public class NationalParkAppUsernamePasswordAuthenticationProvider implements Au
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        User user = userRepository.findByUsername(username);
+        UserEntity user = userRepository.findByUsername(username);
         if (user != null) {
             if (passwordEncoder.matches(pwd, user.getPassword())) {
                 List<GrantedAuthority> authorities = new ArrayList<>();

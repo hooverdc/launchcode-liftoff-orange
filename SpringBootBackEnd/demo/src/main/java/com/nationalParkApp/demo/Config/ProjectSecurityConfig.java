@@ -48,10 +48,10 @@ public class ProjectSecurityConfig {
                         .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                         .authorizeHttpRequests((requests)->requests
 
-                                /*.requestMatchers("/createreview","/itinerary", "/addFavorites", "/favorites", "/favorites/*", "/editreview/*").authenticated()
-                                .requestMatchers("/register","/user", "/reviews").permitAll())*/
-                .requestMatchers("/api/v1/**").authenticated()
-                .requestMatchers("/register","/user", "/reviews").permitAll())
+                                //.requestMatchers("/createreview","/itinerary", "/addFavorites", "/favorites", "/favorites/*", "/editreview/*").authenticated()
+                                .requestMatchers("/register","/user", "/api/v1/**").permitAll())
+                //.requestMatchers("/api/v1/**").authenticated()
+                //.requestMatchers("/register","/user", "/reviews").permitAll())
 
                         .formLogin(Customizer.withDefaults())
                         .httpBasic(Customizer.withDefaults());

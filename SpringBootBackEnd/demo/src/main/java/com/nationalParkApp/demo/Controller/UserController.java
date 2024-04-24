@@ -17,7 +17,7 @@ public class UserController {
 
     public UserController(UserService userService) { this.userService = userService; }
 
-    @PostMapping("/user")
+    @PostMapping("/user2")
     public User createUser(@RequestBody User user) { return userService.createUser(user); }
 
     @GetMapping(path = "/user/{id}")
