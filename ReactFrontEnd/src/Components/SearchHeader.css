@@ -7,9 +7,9 @@
     flex-direction: column;
     background-attachment: fixed; 
 }
-.search-header-title{
+/* .search-header-title{
     font-size: 4.2rem;
-}
+} */
 .search-header-text{
     margin-top: -1.8rem;
     margin-bottom: 2.8rem;
@@ -146,38 +146,38 @@
 
 /* searchform */
 
-.search-form{
+/* .search-form{
   width: 100%;
   max-width: 680px;
-}
-.search-form-elem{
+} */
+/* .search-form-elem{
   padding: 1.4rem 2.8rem;
   border-radius: 3.8rem;
-}
-.search-form-elem .form-control{
+} */
+/* .search-form-elem .form-control{
   font-size: 2rem;
   padding: 0.6rem;
-}
+} */
 /* .search-form-elem .form-control::placeholder{
   opacity: 0.9;
 } */
 
 /* searchlist */
 
-.searchlist{
+/* .searchlist{
   padding: 3rem 0;
   background-color: #f8f9fa;
-}
-.searchlist-content{
+} */
+/* .searchlist-content{
   gap: 3rem;
-}
-.search-item{
+} */
+/* .search-item{
   padding: 3rem 2rem;
   border-radius: 4px;
   background-color: var(--white-color);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px 0px;
   transition: var(--transition);
-}
+} */
 .search-item:hover{
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
@@ -189,14 +189,14 @@
 .search-item-info{
   margin-top: 2rem;
 }
-.search-item-info-item.parkname{
+/* .search-item-info-item.parkname{
   line-height: 1.4;
   margin-bottom: 0.8rem;
-}
-.search-item-info-item.activities{
+} */
+/* .search-item-info-item.activities{
   line-height: 1.4;
   margin-bottom: 4px;
-}
+} */
 
 .search-item-info-item.state{
   opacity: 0.6;

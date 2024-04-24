@@ -41,4 +41,16 @@ public class LoginController {
         }
         return response;
     }
+
+    @GetMapping("/profile/{username}") //new end point, getting the user profile by username, it returns user info
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ResponseEntity<User> getUserProfile(@PathVariable String username) {
+        User user = userRepository.findByUsername(username); //interacts with database, fetchs user info
+        if (user != null) {
+            return ResponseEntity.ok(user); //returns user object
+        } else {
+            return ResponseEntity.notFound().build(); //return '404 Not Found' idk if it's really nesscary
+        }
+    }
+
 }

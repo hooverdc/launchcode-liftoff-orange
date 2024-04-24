@@ -1,19 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 //import "./SearchList.css";
-import './SearchHeader.css'
+// import './SearchHeader.css'
 
 const Search = (search) => {
 
   // console.log(search.activities);
   return (
-    <div className='search-item flex flex-column flex-sb drop-shadow-2xl bg-nps-green-500'>
+    // <div className='search-item flex flex-column flex-sb drop-shadow-2xl bg-nps-green-500'>
+    <div className='p-12 rounded-3xl flex flex-column flex-sb drop-shadow-2xl bg-nps-green-500'>
       <div className='search-item-img'>
         <img src = {search.cover_id} alt = "photo" />
       </div>
      <div className='search-item-info text-center'>
         <Link to = {`${search.parkcode}`} {...search}>
-          <div className='search-item-info-item parkname fw-7 fs-18'>
+          {/* <div className='search-item-info-item parkname fw-7 fs-18'> */}
+          <div className=''>
             <span>{search.fullname}</span>
           </div>
         </Link>
@@ -25,7 +27,8 @@ const Search = (search) => {
           <span>{search.states}</span>
         </div>
 
-        <div className='search-item-info-item activities fs-15'>
+        {/* <div className='search-item-info-item activities fs-15'> */}
+        <div className=''>
           <span className='text-capitalize fw-7'>Activities: </span>
           <span>{search.activities.map((activitie) => {
                     return activitie.name + ", "
