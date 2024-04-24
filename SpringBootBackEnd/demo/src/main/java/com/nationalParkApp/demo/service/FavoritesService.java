@@ -12,6 +12,10 @@ public interface FavoritesService {
 
     boolean deleteFromFavorites(Long id);
 
+    List<Favorites> getAllByParkCode(String parkCode);
+
+    List<Favorites> getAllByUserId(Long id);
+
     List<Favorites> getAllFavorites();
 
     Favorites getFavoritesById(Long id);

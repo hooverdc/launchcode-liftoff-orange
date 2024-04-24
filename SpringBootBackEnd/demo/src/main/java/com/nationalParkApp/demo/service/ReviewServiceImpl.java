@@ -4,7 +4,6 @@ import com.nationalParkApp.demo.entity.ReviewEntity;
 import com.nationalParkApp.demo.Model.Review;
 import com.nationalParkApp.demo.Repository.ReviewRepository;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,9 +32,34 @@ public class ReviewServiceImpl implements ReviewService{
         List<ReviewEntity> reviewEntities = reviewRepository.findAll();
 
         List<Review> reviews = reviewEntities.stream().map(rev -> new Review(
-                rev.getId(),
-                rev.getContent(),
-                rev.getParkCode()))
+                        rev.getId(),
+                        rev.getContent(),
+                        rev.getParkCode(),
+                        rev.getUser()))
+                .collect(Collectors.toList());
+        return reviews;
+    }
+
+    @Override
+    public List<Review> getAllReviewsByParkCode(String parkCode) {
+        List<ReviewEntity> reviewEntities = reviewRepository.findByParkCode(parkCode);
+
+        List<Review> reviews = reviewEntities.stream().map(rev -> new Review(
+                        rev.getId(),
+                        rev.getContent(),
+                        rev.getParkCode()))
+                .collect(Collectors.toList());
+        return reviews;
+    }
+
+    @Override
+    public List<Review> getAllReviewsByUserId(Long id) {
+        List<ReviewEntity> reviewEntities = reviewRepository.findByUserId(id);
+
+        List<Review> reviews = reviewEntities.stream().map(rev -> new Review(
+                        rev.getId(),
+                        rev.getContent(),
+                        rev.getParkCode()))
                 .collect(Collectors.toList());
         return reviews;
     }
