@@ -5,6 +5,7 @@ import { Carousel } from "flowbite-react"
 const PIC_BASE_URL="";
 function Slideshow() {
     const [picList, setPicList] = useState([]);
+    
     useEffect(()=>{
         getParkPics();
     },[])
