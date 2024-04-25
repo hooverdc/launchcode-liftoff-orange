@@ -15,6 +15,7 @@ import ParkDetails from './Components/ParkDetails'
 import Register from './Components/Register'
 import Login from './Components/Login'
 import Footer from './Components/Footer'
+import Profile from './Components/Profile'
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -37,6 +38,7 @@ function App() {
             <Route path = "search" element = {<SearchList />} />
           </ Route>    
           <Route path ="/login" element ={<Login />} />
+          <Route path="/profile" element={<Profile />}/>
           <Route path="/parksearch/search/:parkcode" element={<ParkDetails/>} />
         </Routes>
       </BrowserRouter>

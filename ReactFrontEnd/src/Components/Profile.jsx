@@ -158,6 +158,7 @@ function Profile() {
                   {/* <button type="submit" class="shadow bg-green-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" disabled={submitting}>
                           {submitting ? 'Submitting...' : 'Save Changes'} If submitting is true, text displayed on button will be "Submitting..."
                        </button> need to add function*/}
+                       
                     <button type="submit" className="shadow bg-green-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                       Save Changes
                     </button>
