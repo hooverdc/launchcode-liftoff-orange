@@ -6,12 +6,12 @@ const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 const getActivitiesURL = parkBaseURL+"/activities?api_key="+api_key;
 
 //finds x # ('num') of pictures by string ('searchTerm')
-let searchTerm = 'overlook';
+let searchTerm = 'scenic';
 let num = 10;
 const getImages=axios.get(parkBaseURL+"/multimedia/galleries/assets?limit="+num+"&q="+searchTerm+"&api_key="+api_key);
 
 //finds park by parkCode ('parkCode')
-let parkCode = "arch";
+let parkCode = "";
 const getParks=axios.get(getParkInfoURL+parkCode+"&api_key="+api_key);
 
 //calls activities API

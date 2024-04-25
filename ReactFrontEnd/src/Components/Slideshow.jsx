@@ -23,7 +23,7 @@ function Slideshow() {
         //and rightControl set to non-breaking space...delete those props to make them visible
         <>
             <div className="h-80 pt-10">
-                <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;">
+                <Carousel slideInterval={4000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;">
                     {picList.map((item, idx) => (
                         <img key={idx}src={item.fileInfo.url} className="min-w-full"/>
                     ))}
