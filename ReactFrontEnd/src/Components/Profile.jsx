@@ -3,7 +3,6 @@ import Header from './Header'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react' //useState is a React Hook that lets you add a state variable to your component.
 import axios from 'axios';
-// import { useHistory } from "react-router-dom"; //"The useHistory hook gives you access to the history instance that you may use to navigate."
 import { useNavigate } from 'react-router-dom';
 
 
@@ -11,16 +10,20 @@ function Profile() {
     const [profile, setProfile] = useState({ username: '', password: '' });
     const [loading, setLoading] = useState(true); //idk if this is necessary
     const [formData, setFormData] = useState({ username: '', password: '' });
-    // const history = useHistory();
     const navigate = useNavigate();
+    const user = JSON.parse(window.localStorage.getItem("User"));
+    // const user = window.localStorage.getItem("User");
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/profile/'+ profile.username); //gets the users info and creates url
-        setProfile(response.data); //set profile
-        setFormData(response.data); // Sets initial form data
-        setLoading(false); //loading is false when data is fetched, so loading is completed
+        if (user) { // Check if user is not null or undefined
+          const response = await axios.get(`http://localhost:8080/api/v1/user/${user.id}`); 
+          // console.log('Fetched profile data:', response.data);
+          setProfile(response.data); //set profile
+          setFormData(response.data); //Sets initial form data
+          setLoading(false);//loading is false when data is fetched, so loading is completed
+        }
       } catch (error) {
         console.error('Error fetching profile:', error); //lets us know if there is an error with the request
       }
@@ -28,7 +31,7 @@ function Profile() {
 
     fetchProfile(); //calls fetchprofile when this runs
       // }, []);
-    }, [profile.username]); //should make it so it only runs when this changes
+    }, [user]); //should make it so it only runs when this changes
     
 
     const handleChange = (e) => { //updates the form data to what the user inputs
@@ -38,10 +41,13 @@ function Profile() {
     const handleSubmit = async (e) => { //this is when the user submits the form, it's a PUT request that saves user info
       e.preventDefault();
       try {
-        await axios.put('http://localhost:8080/profile/update', formData); // this updates the profile endpoint
-        const response = await axios.get('/profile/' + formData.username); //fetchs updated data again 
-        setProfile(response.data); //updates the state with new data 
-        alert('Profile updated successfully'); //gets notification if it works or not
+        if (user) { // Check if user is not null or undefined
+          await axios.put(`http://localhost:8080/api/v1/user/${user.id}`, formData);
+          setProfile(formData);
+          alert('Profile updated successfully');
+      }
+        // // await axios.put('http://localhost:8080/profile/update', formData); // this updates the profile endpoint 
+        // // setProfile(response.data); //updates the state with new data 
       } catch (error) {
         console.error('Error updating profile:', error);
         alert('Error updating profile. Please try again.'); //oh no!
@@ -54,7 +60,6 @@ function Profile() {
           alert('Logout successfull');
           // setProfile({ username: '', password: '' }); //this resets the state idk if we need this because of this [profile.username]); above 
           // setFormData({ username: '', password: '' });
-          // history.push('/login'); //brings user back to login page
           navigate('/login');
       }
   };
@@ -62,11 +67,15 @@ function Profile() {
     const handleDeleteAccount = async () => {
       if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) { //creates a pop up to virify user wants to delete
         try {
-          // await axios.delete('/profile/delete'); // Delete profile endpoint
-          await axios.delete('http://localhost:8080/profile/delete/' + profile.username);
-          alert('Account deleted successfully'); //yay!
-          // history.push('/login'); // Redirects to the login page
-          navigate('/home');
+          if (user) { // Check if user is not null or undefined
+            await axios.delete(`http://localhost:8080/api/v1/user/${user.id}`);
+            localStorage.removeItem('userData');
+            alert('Account deleted successfully');
+            navigate('/home');
+        }
+          // // await axios.delete('/profile/delete'); // Delete profile endpoint
+          // // await axios.delete('http://localhost:8080/profile/delete/' + profile.username);
+          
         } catch (error) {
           console.error('Error deleting account:', error);
           alert('An error occurred while deleting your account. Please try again later.');
@@ -111,11 +120,6 @@ function Profile() {
                     </label>
                   </div>
                   <div className="w-2/3">
-                    {/* <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" defaultValue="Username"/> */}
-                  
-                    {/* <label class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ">
-                        PatsUsername 
-                    </label> */}
 
                   <input //allows user to put in new text and save it, there is a place hold but idk if that needs to be there, mostly it's for me rn
                     type="text"
@@ -135,10 +139,6 @@ function Profile() {
                     </label>
                   </div>
                   <div className="w-2/3">
-                    {/* <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" defaultValue="**********" /> */}
-                    {/* <label class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ">
-                        PatsPassword
-                    </label> */}
 
                   <input  
                     type="password" //characters are masked for security.
