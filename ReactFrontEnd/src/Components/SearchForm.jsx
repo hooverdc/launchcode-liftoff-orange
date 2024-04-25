@@ -2,12 +2,16 @@ import React, {useRef, useEffect, useState} from 'react';
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context'
-//import "./SearchForm.css";
+// import "./SearchForm.css";
 import './SearchHeader.css'
 import {states} from "../constants/Enum"
 import { Axios } from 'axios';
 import GlobalAPI from "../Services/GlobalAPI"
 
+//this is responsible for rendering the search input field and handling search functionality
+// This provides the search form interface and
+// allows users to input a search term and then trigger the search
+// It updates the application state and then has the search load to display search results
 
 
 const SearchForm = () => {
@@ -16,7 +20,7 @@ const SearchForm = () => {
   const {setSearchState} = useGlobalContext();
   const {setActivity} = useGlobalContext();
   const searchState = useRef('');
-  const searchText = useRef('');
+  const searchText = useRef(''); //input
   const searchActivity = useRef('');
   const [activityList, setActivityList] = useState([]);
   useEffect(() => {
