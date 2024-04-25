@@ -12,7 +12,8 @@ const Search = (search) => {
         <img src = {search.cover_id} alt = "photo" />
       </div>
      <div className='search-item-info text-center'>
-        <Link to = {`${search.parkcode}`} {...search}>
+        <Link to = {`${search.parkcode}`} {...search} onClick={() => {window.scroll(0,0);}}>
+          {/* above 'window.scroll' will load park details page at top - fix for react router behavior */}
           <div className='search-item-info-item parkname fw-7 fs-18'>
             <span>{search.fullname}</span>
           </div>

@@ -13,6 +13,7 @@ import HeaderItem from './HeaderItem';
 
 
 {/* this functional component is used to define the header bar content */}
+
 function Header() {
     const [toggle, setToggle] = useState(false) //for drop-down on mobile menu
 

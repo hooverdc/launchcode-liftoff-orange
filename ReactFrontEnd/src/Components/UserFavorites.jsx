@@ -3,7 +3,7 @@ import getFavoritesByUserId from '../Services/FavoritesServices'
 
 
 //store user favorites into variable, use in initial useState
-
+// localStorage.getItem()
 
 function UserFavorites() {
 
@@ -13,7 +13,7 @@ function UserFavorites() {
 
     //this retrieves current user from localStorage
     useEffect(() => {
-        const storedUser = localStorage.getItem('userId'); //'userId' may need to be updated to correct value in localStorage
+        const storedUser = localStorage.getItem('user'); //'userId' may need to be updated to correct value in localStorage
         if (storedUser) {
             setCurrentUser(storedUser); 
         } else {
@@ -22,10 +22,10 @@ function UserFavorites() {
     }, [])
 
     //create call to backend here to retrive user favorites 
-    useEffect(() => {
-        const currentFavorites = getFavoritesByUserId(currentUser);
-        setUserFavs(currentFavorites);
-    }, [userFavs])
+    // useEffect(() => {
+    //     const currentFavorites = getFavoritesByUserId(currentUser);
+    //     setUserFavs(currentFavorites);
+    // }, [userFavs])
 
     //whenever a favorite park is deleted, useEffect needs to update the the collection of user's favorite parks and rerender the table of favorites
     useEffect(() => {
