@@ -43,13 +43,15 @@ public class ProjectSecurityConfig {
                 return config;
             }
 
-        })).csrf((csrf) -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers( "/register","/user")
+        })).csrf((csrf) -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers( "/api/v1/**","/register","/user")
                                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                         .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                         .authorizeHttpRequests((requests)->requests
 
-                                .requestMatchers("/api/v1/**").authenticated()
-                                .requestMatchers("/register","/user").permitAll())
+                                //.requestMatchers("/createreview","/itinerary", "/addFavorites", "/favorites", "/favorites/*", "/editreview/*").authenticated()
+                                .requestMatchers("/register","/user", "/api/v1/**").permitAll())
+                //.requestMatchers("/api/v1/**").authenticated()
+                //.requestMatchers("/register","/user", "/reviews").permitAll())
 
                         .formLogin(Customizer.withDefaults())
                         .httpBasic(Customizer.withDefaults());

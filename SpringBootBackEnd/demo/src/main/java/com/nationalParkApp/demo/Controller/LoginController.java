@@ -24,16 +24,15 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-        UserEntity savedUser = null;
+    public ResponseEntity<String> registerUser(@RequestBody UserEntity user) {
+
         ResponseEntity response = null;
         try {
             String hashward = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashward);
-//            savedUser = (UserEntity) userRepository.save(user);
-                BeanUtils.copyProperties(user, savedUser);
-                userRepository.save(savedUser);
-            if (savedUser.getId()>0) {
+
+            userRepository.save(user);
+            if (user.getId()>0) {
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
                         .body("Given user details are successfully registered");
@@ -47,9 +46,8 @@ public class LoginController {
     }
 
     @RequestMapping("/user")
-    public ResponseEntity<String> loginUser (@RequestBody User user) {
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body("Given user details are successfully registered");
-    }
+    public UserEntity loginUser (@RequestBody User user) {
+        return userRepository.findByUsername(user.getUsername());
+        }
+
 }

@@ -36,7 +36,7 @@ public class ReviewController {
     }
 
     @GetMapping("/review/parkcode{id}")
-    public List<Review> getAllReviewsByParkCode(@PathVariable String parkCode) { return reviewService.getAllReviewsByParkCode(parkCode); }
+    public List<Review> getAllReviewsByParkCode(@PathVariable Long id) { return reviewService.getAllReviewsByUserId(id); }
 
     @GetMapping(path = "/review{id}")
     public ResponseEntity<Review> getReviewById(@PathVariable Long id) {

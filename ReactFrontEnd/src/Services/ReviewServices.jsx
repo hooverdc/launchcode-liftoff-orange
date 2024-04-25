@@ -14,15 +14,14 @@ const axiosInstance = axios.create({
     "Access-Control-Allow-Origin": "http://localhost:5173",
     "Access-Control-Allow-Methods": "POST",
     "Access-Control-Allow-Headers":
-      "Content-Type, Authorization, X-Requested-With",
-    Authorization: window.localStorage.getItem("Auth"),
+    "Content-Type, Authorization, X-Requested-With",
+    "Authorization": window.localStorage.getItem("Auth"),
   },
 });
 
 class ReviewService {
   createReview(review) {
-    console.log(window.localStorage.getItem("Auth"));
-    return axiosInstance.post(REVIEW_API_BASE_URL, review);
+    return axiosInstance.post(review);
   }
 
   getReviewsByUserId(id) {

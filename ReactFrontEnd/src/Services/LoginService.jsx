@@ -14,7 +14,7 @@ class LoginService {
         instance.interceptors.request.use((config) => {
             const hash = window.btoa(user.username+":"+user.password);
             if (hash) {
-                let authHeader = "Basic "+hash;
+                let authHeader = "Basic "+ hash;
                 instance.defaults.headers["Authorization"] = authHeader;
                 window.localStorage.setItem("Auth", authHeader);
             }

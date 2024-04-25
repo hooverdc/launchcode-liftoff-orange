@@ -3,14 +3,33 @@ import { Link } from 'react-router-dom'
 import Slideshow from './Slideshow'
 import Header from './Header'
 import axios from 'axios';
+import Itinerary from './Itinerary';
+import LoginService from '../Services/LoginService';
 
 function Register() {
-  const [user, setUser] = useState({username: "", password: "", role: "user"});
+  const [user, setUser] = useState({username: "", password: ""});
+  const SERVER_API_BASE_URL = "http://localhost:8080";
+  const axiosInstance = axios.create({
+        withCredentials: true,
+        baseURL: SERVER_API_BASE_URL,
+        headers: {
+        "Cache-Control": "no-cache",
+        "Accept-Language": "en",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+        "Authorization": null,
+        
+        }});
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:8080/register", user).then((response) => {
+    axiosInstance.post("/register", user).then((response) => {
         console.log(response.status, response.data)
+        if(response.status == 201){
+          LoginService.login(user,axiosInstance);
+        }
     })
       
   };

@@ -13,11 +13,7 @@ const CreateReview = () => {
   //breaks down JSON into single park object
   const parkDetails = singlePark.data[0]
 
-  const user = {
-    id: 2,
-    username: "paulUser",
-    password: "userPaul",
-  };
+  const user = window.localStorage.getItem("User");
 
   const [review, setReview] = useState({
     id: "",
