@@ -8,8 +8,6 @@ import axios from 'axios'
 import UserFavorites from './UserFavorites'
 import { states } from '../constants/Enum'
 
-
-
 function Home() {
   
 console.log(states);
@@ -22,7 +20,6 @@ console.log(states);
           <div className="text-center">"Welcome to Park Trippin'!</div>
           <div> Here, you'll effortlessly discover the natural wonders and serene beauty of our country's most cherished landscapes. Whether you seek rugged trails, tranquil lakes, or breathtaking vistas, embark on your next adventure with us. Start exploring, and let the journey to our nation's heart begin!</div>
         </div>
-        <UserFavorites/>
       </div>
       
     </>

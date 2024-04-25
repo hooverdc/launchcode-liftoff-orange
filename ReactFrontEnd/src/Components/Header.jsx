@@ -1,8 +1,4 @@
-{/* KW - 3/23/24 */}
-
 import React, {useState} from 'react'
-// import logo from '../assets/Images/NPS-Logo.png'
-// import logo from '../assets/Images/logo-mushroom.svg'
 import logo from '../assets/Images/parktrippin-logo.png'
 
 import {HiHome, HiMagnifyingGlass,HiStar,HiPaperAirplane,HiBars3} from "react-icons/hi2";
@@ -11,9 +7,7 @@ import {HiPlus,HiDotsVertical} from "react-icons/hi";
 import { list } from 'postcss';
 import HeaderItem from './HeaderItem';
 
-
 {/* this functional component is used to define the header bar content */}
-
 function Header() {
     const [toggle, setToggle] = useState(false) //for drop-down on mobile menu
 

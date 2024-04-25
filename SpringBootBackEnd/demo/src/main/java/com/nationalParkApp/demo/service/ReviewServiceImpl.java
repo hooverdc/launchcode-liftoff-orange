@@ -40,7 +40,7 @@ public class ReviewServiceImpl implements ReviewService{
         return reviews;
     }
 
-   /* @Override
+    @Override
     public List<Review> getAllReviewsByParkCode(String parkCode) {
         List<ReviewEntity> reviewEntities = reviewRepository.findByParkCode(parkCode);
 
@@ -50,7 +50,7 @@ public class ReviewServiceImpl implements ReviewService{
                         rev.getParkCode()))
                 .collect(Collectors.toList());
         return reviews;
-    }*/
+    }
 
     @Override
     public List<Review> getAllReviewsByUserId(Long id) {

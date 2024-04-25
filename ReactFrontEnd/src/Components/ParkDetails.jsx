@@ -86,45 +86,6 @@ function ParkDetails() {
   if (error) return <div>There was an error</div>;
   if (isLoading) return <div>DATA IS LOADING...</div>;
 
-  //#############################
-  //WORKING WITH FRESH API CALLS
-
-  // useEffect(() => {
-  //     getSinglePark();
-  // }, [])
-
-  // const getSinglePark = async () => {
-  //     try {
-  //         const response = await axios.get("https://developer.nps.gov/api/v1/parks?parkCode="+parkId+"&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk")
-  // .then(response => {
-  // axios.get(getParkInfoURL+parkCode+"&api_key="+api_key).then((response) => {
-  // setPark(response.data.data[0])
-  // setPark(response.data.data)
-  // console.log(singlePark)
-  // setPark(response.data.data[0])
-  // console.log("singlePark is: " + singlePark)
-  // });
-  //     } catch (error) {
-  //         console.log("Error: ", error)
-  //     }
-  // }
-  //###############################
-
-  //###############################
-  //Working, turned off for testing
-  // const singlePark = searches.find(park => park.parkCode === useParams().parkCode)
-  // console.log(parkCode)
-  // async function getPark() {
-  //     try{
-  //         const response = axios.get(getParkInfoURL+parkCode+"&api_key="+api_key);
-  //         console.log(response)
-  //     } catch (error) {
-  //         console.error(error)
-  //     }
-  // }
-  // .then(response=>setPark(response.data.data))
-  //########################
-
   //initialize single park object
   const parkInfo = data.data[0];
 
@@ -283,10 +244,10 @@ function ParkDetails() {
             </button>
           )}
           <Link to="/createreview">
-            <button className="bg-yellow-300 rounded-3xl">Review</button>
+            <button className="bg-yellow-300 rounded-3xl" onClick={() => {window.scroll(0,0);}}>Review</button>
           </Link>
           <Link to="/itinerary">
-            <button className=" bg-yellow-300 rounded-3xl">
+            <button className=" bg-yellow-300 rounded-3xl" onClick={() => {window.scroll(0,0);}}>
               Create Itinereary
             </button>
           </Link>

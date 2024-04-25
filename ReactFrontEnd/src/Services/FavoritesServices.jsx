@@ -28,15 +28,15 @@ class FavoritesServices {
 
   
   getFavorites() {
-    return axios.get(FAVORITES_BASE_API_URL);
+    return axios.get(FAVORITES_API_BASE_URL);
   }
 
   getFavoritesByUserId(id) {
-    return axios.get(FAVORITES_BASE_API_URL + "/" + "user" + "/" + id);
+    return axios.get(FAVORITES_API_BASE_URL + "/" + "user" + "/" + id);
   }
 
   deleteFavorites(id) {
-    return axios.delete(FAVORITES_BASE_API_URL + "/" + id);
+    return axios.delete(FAVORITES_API_BASE_URL + "/" + id);
   }
 }
 

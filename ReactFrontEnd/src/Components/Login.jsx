@@ -4,6 +4,7 @@ import Slideshow from './Slideshow'
 import Header from './Header'
 import axios from 'axios';
 import LoginService from '../Services/LoginService';
+import UserFavorites from './UserFavorites';
 const SERVER_API_BASE_URL = "http://localhost:8080/";
 const axiosInstance = axios.create({
         withCredentials: true,

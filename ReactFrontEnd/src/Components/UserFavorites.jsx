@@ -1,31 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import getFavoritesByUserId from '../Services/FavoritesServices'
 
+if (localStorage.getItem("User") !== null) {
+    console.log("LOCAL STORAGE USER EXISTS")
+} else {
+    console.log("NO LOCAL STORAGE")
+}
 
+// console.log("LOCAL STORAGE")
+// console.log(localStorage.user)
+// console.log(localStorage.getItem("user"))
 //store user favorites into variable, use in initial useState
 // localStorage.getItem()
+
+
+
 
 function UserFavorites() {
 
     const [ currentUser, setCurrentUser ] = useState([""]);
     const [ userFavs, setUserFavs ] = useState([""]);
 
+    let user = ((JSON.parse(localStorage.getItem("User"))).data.id)
+    console.log("")
 
     //this retrieves current user from localStorage
-    useEffect(() => {
-        const storedUser = localStorage.getItem('user'); //'userId' may need to be updated to correct value in localStorage
-        if (storedUser) {
-            setCurrentUser(storedUser); 
-        } else {
-            console.log("Error: no user signed in");
-        }
-    }, [])
+    useEffect(() => {  
+        
+    }, []);
 
     //create call to backend here to retrive user favorites 
-    // useEffect(() => {
+    useEffect(() => {
     //     const currentFavorites = getFavoritesByUserId(currentUser);
     //     setUserFavs(currentFavorites);
-    // }, [userFavs])
+    }, [userFavs])
 
     //whenever a favorite park is deleted, useEffect needs to update the the collection of user's favorite parks and rerender the table of favorites
     useEffect(() => {
