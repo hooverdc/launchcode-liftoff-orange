@@ -3,17 +3,34 @@ import { useNavigate } from "react-router";
 import Header from "./Header";
 import ReviewServices from "../Services/ReviewServices"
 import { queryClient } from "../main";
+import axios from "axios";
 
 
 const CreateReview = () => {
 
   //fetches react query cached data
   const singlePark = queryClient.getQueryData(["singlePark"])
-
   //breaks down JSON into single park object
   const parkDetails = singlePark.data[0]
 
-  const user = window.localStorage.getItem("User");
+  const user = JSON.parse(localStorage.getItem("User"));
+  
+  const REVIEW_API_BASE_URL = "http://localhost:8080/api/v1";
+
+  const axiosInstance = axios.create({
+    withCredentials: true,
+    baseURL: REVIEW_API_BASE_URL,
+    headers: {
+      "Cache-Control": "no-cache",
+      "Accept-Language": "en",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Access-Control-Allow-Methods": "POST , GET",
+      "Access-Control-Allow-Headers":
+      "Content-Type, Authorization, X-Requested-With",
+      "Authorization": null
+    },
+  });
 
   const [review, setReview] = useState({
     id: "",
@@ -21,11 +38,6 @@ const CreateReview = () => {
     content: "",
     user: user,
   });
-
-  //confirms above declarations in console // remove if not needed for testing
-  console.log("HERE IS THE REACT QUERY CACHED DATA FROM PARK DETAILS");
-  console.log(singlePark);
-  console.log(parkDetails);
 
   const navigate = useNavigate();
 
@@ -36,23 +48,13 @@ const CreateReview = () => {
 
   const saveReview = (e) => {
     e.preventDefault();
-    ReviewServices.createReview(review)
-      .then((response) => {
-        console.log(response);
-        //navigate("/home");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    ReviewServices.createReview(review, axiosInstance)
   };
 
   const reset = (e) => {
     e.preventDefault();
     setReview({
-      id: "",
-      parkCode: parkDetails.parkCode,
-      content: "",
-      userId: user,
+      content: ""
     });
   };
 

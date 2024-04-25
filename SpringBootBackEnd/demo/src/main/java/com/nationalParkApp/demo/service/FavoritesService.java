@@ -1,6 +1,7 @@
 package com.nationalParkApp.demo.service;
 
 import com.nationalParkApp.demo.Model.Favorites;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 @Service
 public interface FavoritesService {
 
-    Favorites addToFavorites(Favorites favorites);
+    ResponseEntity addToFavorites(Favorites favorites);
 
     boolean deleteFromFavorites(Long id);
 

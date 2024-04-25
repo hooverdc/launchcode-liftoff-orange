@@ -2,10 +2,12 @@ import React, {useRef, useEffect, useState} from 'react';
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context'
+<<<<<<< HEAD
 // import "./SearchForm.css";
 import './SearchHeader.css'
+=======
+>>>>>>> refs/heads/main
 import {states} from "../constants/Enum"
-import { Axios } from 'axios';
 import GlobalAPI from "../Services/GlobalAPI"
 
 //this is responsible for rendering the search input field and handling search functionality
