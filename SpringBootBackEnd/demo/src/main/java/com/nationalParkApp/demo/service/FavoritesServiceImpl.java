@@ -3,7 +3,10 @@ package com.nationalParkApp.demo.service;
 import com.nationalParkApp.demo.Model.Favorites;
 import com.nationalParkApp.demo.Repository.FavoritesRepository;
 import com.nationalParkApp.demo.entity.FavoritesEntity;
+import com.nationalParkApp.demo.entity.ReviewEntity;
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -18,12 +21,25 @@ public class FavoritesServiceImpl implements FavoritesService {
     public FavoritesServiceImpl(FavoritesRepository favoritesRepository) { this.favoritesRepository = favoritesRepository; }
 
     @Override
-    public Favorites addToFavorites(@RequestBody Favorites favorites) {
-        FavoritesEntity favoritesEntity = new FavoritesEntity();
+    public ResponseEntity addToFavorites(@RequestBody Favorites favorites) {
+        ResponseEntity response = null;
+        try {
+            FavoritesEntity favoritesEntity = new FavoritesEntity();
 
-        BeanUtils.copyProperties(favorites, favoritesEntity);
-        favoritesRepository.save(favoritesEntity);
-        return favorites;
+            BeanUtils.copyProperties(favorites, favoritesEntity);
+            favoritesRepository.save(favoritesEntity);
+            if (favoritesEntity.getId()>0) {
+                response = ResponseEntity
+                        .status(HttpStatus.CREATED)
+                        .body(favoritesEntity);
+            }}
+        catch (Exception ex) {
+            response = ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("AN exception occurred due to " + ex.getMessage());
+        }
+
+        return response;
     }
 
     @Override

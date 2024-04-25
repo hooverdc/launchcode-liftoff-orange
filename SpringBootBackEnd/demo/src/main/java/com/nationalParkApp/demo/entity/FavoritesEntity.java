@@ -1,5 +1,6 @@
 package com.nationalParkApp.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nationalParkApp.demo.Model.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class FavoritesEntity {
     private String parkCode;
 
     @ManyToOne
+    @JsonBackReference
     @JoinTable(name = "user_favorites",
             joinColumns = @JoinColumn(name = "favorites_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
