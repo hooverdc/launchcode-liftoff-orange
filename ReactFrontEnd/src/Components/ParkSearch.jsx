@@ -1,14 +1,17 @@
 import React from 'react'
-// import SearchHeader from './SearchHeader'
 import { Outlet } from 'react-router-dom'
-// import './SearchHeader.css'
 import Header from './Header'
 import SearchForm from './SearchForm'
+
+//This loads the Header at the top of the page
+//Has css to import picture in the background and size of the search 
+//renders SearchForm when search is used
+//Outlet allows the search bar to stay on the page and load the child route SearchList below it
+//will remove <p> if we get enums 
 
 const ParkSearch = () => {
   return (
     <>
-      {/* <SearchHeader /> */}
       <div>
           <div className='holder'>
           <header className='search-header'>
@@ -32,8 +35,3 @@ const ParkSearch = () => {
 
 export default ParkSearch
 
-//This loads the Header at the top of the page
-//Has css to import picture and size of the search 
-//SearchForm 
-//Outlet allows the search bar to stay on the page and load the child route SearchList below it
-//will remove <p> if we get enums 

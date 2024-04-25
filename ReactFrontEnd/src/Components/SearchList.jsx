@@ -1,21 +1,17 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
 import Search from "./Search";
-// import coverImg from "../images/photo2.jpg";
-//import "./SearchList.css";
 import './SearchHeader.css'
 
-const SearchList = () => {
-  const {searches, resultName} = useGlobalContext();
-  const parksWithCovers = searches.map((singleSearch) => {
-    return {
-      ...singleSearch,
-    // cover_img: singleSearch.cover_id ? `https://developer.nps.gov/api/v1/multimedia/galleries/assets?limit=50&q=${singleSearch.cover_id}&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk` : coverImg
-    }
-    //This shows the picture in the search
-  });
+// This is a container to display the search results
+// It fetches search data from globalContext in the context file 
+//this provides the grid styling
+//the map limits the search items displayed 
+//it renders each item using Search, each search is assigned to it's own key it's bases on the index in the searches array
 
-   //console.log(parksWithCovers);
+const SearchList = () => {
+
+  const { searches, resultName } = useGlobalContext(); //accesses the searches and resultName from context
 
   return (
     // <section className='searchlist bg-nps-green-300'>
@@ -29,7 +25,7 @@ const SearchList = () => {
         <div className='gap-12 grid'>
           {
             //limits search and shows results
-            parksWithCovers.slice(0, 20).map((item, index) => {
+            searches.slice(0, 20).map((item, index) => {
               return (
                 <Search key = {index} {...item} />
               )

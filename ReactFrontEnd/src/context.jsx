@@ -3,6 +3,9 @@ import { useCallback } from "react";
 import { useQuery } from '@tanstack/react-query'
 import axios from "axios";
 
+//This allows components in the project to access and modify the global state related 
+//to search terms and search results obtained from the National Park Service API.
+
 const URL = "https://developer.nps.gov/api/v1";
 const api_key="Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk"
 
@@ -10,8 +13,8 @@ const api_key="Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk"
 const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [searches, setSearch] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(""); //manages the search 
+    const [searches, setSearch] = useState([]); //search results
     const [resultName, setResultName] = useState("");
 
     const fetchSearches = useCallback(
@@ -62,11 +65,12 @@ const AppProvider = ({children}) => {
         }, [searchTerm]);
 
     
-
+    // useEffect triggers fetchSearches when searchTerm or fetchSearches changes.
     useEffect(() => {
         fetchSearches();
     }, [searchTerm, fetchSearches]);
 
+    //This provides the state variables and sets to children components
     return (
         <AppContext.Provider value = {{
              searches, setSearchTerm, resultName, setResultName,
@@ -77,7 +81,7 @@ const AppProvider = ({children}) => {
  }
 
 
-
+//this is a custom hook that accesses context values from any component within the application
 export const useGlobalContext = () => {
     return useContext(AppContext);
 }

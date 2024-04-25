@@ -1,17 +1,21 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react'; //manages state and side effects
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 //import "./SearchForm.css";
 // import './SearchHeader.css'
-import { Dropdown } from 'flowbite-react';
+
+//this is responsible for rendering the search input field and handling search functionality
+// This provides the search form interface and 
+// allows users to input a search term and then trigger the search 
+// It updates the application state and then has the search load to display search results
 
 const SearchForm = () => {
 
-  const {setSearchTerm} = useGlobalContext();
-  const searchText = useRef('');
+  const {setSearchTerm} = useGlobalContext(); 
+  const searchText = useRef(''); //input
   const navigate = useNavigate();
-  const [stateSearch, setStateSearch] = useState(''); 
+ 
 
   useEffect(() => searchText.current.focus(), []);
 
@@ -21,8 +25,8 @@ const SearchForm = () => {
     let tempSearchTerm = searchText.current.value.trim(); //removes whitespace from both ends of this string and returns a new string
     
     if(tempSearchTerm === ''){
-      setSearchTerm("Yellowstone"); //defualt searchterm ---there is a defualt now but 3 results with 1 being yellowstone?
-      
+      setSearchTerm("park"); //defualt searchterm
+      //setSearchTerm is from global context that sets the search term
     } else {
       setSearchTerm(tempSearchTerm);
     }
@@ -45,13 +49,8 @@ const SearchForm = () => {
             {/* <input type = "text" className='form-control text-gray-500 w-full' placeholder='Yellowstone Park ...' ref = {searchText}/> */}
             <input type = "text" className='text-gray-500 w-full text-4xl p-px' placeholder='Yellowstone Park ...' ref = {searchText}/>
             <button type = "submit" className='flex flex-c' onClick={handleSubmit}>
-              <FaSearch className='text-black' size = {32} />
+              <FaSearch className='text-black' size = {32} /> 
             </button>
-
-            <div className="card flex justify-content-center">
-            <Dropdown ref={searchState} onChange={(e) => setStateSearch(e.value)} options={states} optionLabel="name"
-              placeholder="Select a State" className="w-full md:w-14rem" />
-          </div>
 
           </div>
         </form>
@@ -62,21 +61,3 @@ const SearchForm = () => {
 }
 
 export default SearchForm
-
-// const {setSearchTerm, setResultSearch} = useGlobalContext();
-//   const searchText = useRef('');
-//   const navigate = useNavigate();
-
-//   useEffect(() => searchText.current.focus(), []);
-//   const handleSubmit = (e) => {
-//     e.preventDefault(); //actually allows the search not just the defualt
-//     let tempSearchTerm = searchText 
-//     if(tempSearchTerm.length === 0){
-//       setSearchTerm("yellowstone"); //defualt searchterm
-//       setResultSearch("Please enter something");
-//     } else {
-//       setSearchTerm(searchText.current.value);
-//     }
-
-//     navigate("/parksearch/search");
-//   };

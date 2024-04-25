@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react' //useState is a React Hook that lets
 import axios from 'axios';
 // import { useHistory } from "react-router-dom"; //"The useHistory hook gives you access to the history instance that you may use to navigate."
 import { useNavigate } from 'react-router-dom';
-import { Outlet } from 'react-router-dom'
-
 
 
 function Profile() {
@@ -19,7 +17,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('/profile/'+ profile.username); //gets the users info and creates url
+        const response = await axios.get('http://localhost:8080/profile/'+ profile.username); //gets the users info and creates url
         setProfile(response.data); //set profile
         setFormData(response.data); // Sets initial form data
         setLoading(false); //loading is false when data is fetched, so loading is completed
@@ -40,9 +38,9 @@ function Profile() {
     const handleSubmit = async (e) => { //this is when the user submits the form, it's a PUT request that saves user info
       e.preventDefault();
       try {
-        await axios.put('/profile/update', formData); // this updates the profile endpoint
-            const response = await axios.get('/profile/'+{username}); //fetchs updated data again 
-            setProfile(response.data); //updates the state with new data 
+        await axios.put('http://localhost:8080/profile/update', formData); // this updates the profile endpoint
+        const response = await axios.get('/profile/' + formData.username); //fetchs updated data again 
+        setProfile(response.data); //updates the state with new data 
         alert('Profile updated successfully'); //gets notification if it works or not
       } catch (error) {
         console.error('Error updating profile:', error);
@@ -54,8 +52,8 @@ function Profile() {
       if (window.confirm('Are you sure you want to log out?')) { //popup to comfirm
           localStorage.removeItem('userData'); //or "token-info instead? clear out userdata from local storage
           alert('Logout successfull');
-          setProfile({ username: '', password: '' }); //this resets the state idk if we need this because of this [profile.username]); above 
-          setFormData({ username: '', password: '' });
+          // setProfile({ username: '', password: '' }); //this resets the state idk if we need this because of this [profile.username]); above 
+          // setFormData({ username: '', password: '' });
           // history.push('/login'); //brings user back to login page
           navigate('/login');
       }
@@ -64,10 +62,11 @@ function Profile() {
     const handleDeleteAccount = async () => {
       if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) { //creates a pop up to virify user wants to delete
         try {
-          await axios.delete('/profile/delete'); // Delete profile endpoint
+          // await axios.delete('/profile/delete'); // Delete profile endpoint
+          await axios.delete('http://localhost:8080/profile/delete/' + profile.username);
           alert('Account deleted successfully'); //yay!
           // history.push('/login'); // Redirects to the login page
-          navigate('/login');
+          navigate('/home');
         } catch (error) {
           console.error('Error deleting account:', error);
           alert('An error occurred while deleting your account. Please try again later.');
@@ -92,7 +91,7 @@ function Profile() {
 
 // const Profile = () => {
   return (
-      <div>
+      
     <>
     
         <Header />
@@ -152,7 +151,7 @@ function Profile() {
                   </div>
                 </div>
               
-                <div className="flex ">
+                <div className="flex items-center mb-6 ">
                   {/* <div class="w-1/3"></div> */}
                   <div className="w-2/3">
                   {/* conditionally disables button if submitting is true, button will disable, stops users from clicking it. prevents multiple form submissions while a request is being processed. */}
@@ -176,22 +175,9 @@ function Profile() {
                 </div>
 
               </form>
-  
-    
-          {/* <div name="button group" className="flex justify-evenly">
-            <button className="bg-yellow-300 rounded-3xl">Favorites</button>
-            <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Reviews</button></Link>
-            <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Itinerearies</button></Link>
-        </div> */}
-        {/* //come back and change link of itinerary and reviews */}
-        {/* should this have the buttons? or should it just have logout and delete buttons? */}
 
-</div>
+</div></>
 
-
-</>
-  <Outlet /> 
-</div>
   )
 }
 
@@ -209,9 +195,8 @@ export default Profile
 //get authinticated 
 //will add outlet to load reviews favs and itineraries
 //add notes on how things work 
-//change ot react query ???
 //do we need to add @Size(min =5, max = 20) to username and password - in backend and front end 
 //ask if i set up sql right
 //eventlistener??
 //trim off white space before sending
-//
+//login page should use naviage to go to profile or home
