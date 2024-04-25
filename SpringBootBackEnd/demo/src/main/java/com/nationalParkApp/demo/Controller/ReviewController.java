@@ -31,7 +31,7 @@ public class ReviewController {
     }
 
     @GetMapping("/review/user{id}")
-    public List<Review> getAllReviewsByUserId(@PathVariable Long id) {
+    public ResponseEntity<String> getAllReviewsByUserId(@PathVariable Long id) {
         return reviewService.getAllReviewsByUserId(id);
     }
 
