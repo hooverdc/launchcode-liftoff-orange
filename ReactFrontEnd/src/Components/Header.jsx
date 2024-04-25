@@ -47,6 +47,11 @@ function Header() {
             icon:HiUser,
             path:'/profile'
         },
+        {
+            name: 'LOGIN',
+            icon: HiUser,
+            path: '/login'
+        }
 
     ]
     return (
