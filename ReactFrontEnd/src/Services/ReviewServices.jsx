@@ -1,27 +1,27 @@
 import React from 'react'
 import axios from 'axios'
 import { getItem } from 'localforage';
-
-const REVIEW_API_BASE_URL = "http://localhost:8080/api/v1/review";
-
-const axiosInstance = axios.create({
-  withCredentials: true,
-  baseURL: REVIEW_API_BASE_URL,
-  headers: {
-    "Cache-Control": "no-cache",
-    "Accept-Language": "en",
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "http://localhost:5173",
-    "Access-Control-Allow-Methods": "POST",
-    "Access-Control-Allow-Headers":
-    "Content-Type, Authorization, X-Requested-With",
-    "Authorization": window.localStorage.getItem("Auth"),
-  },
-});
+import { useNavigate } from "react-router";
 
 class ReviewService {
-  createReview(review) {
-    return axiosInstance.post(review);
+  
+  createReview(review, instance) {
+    
+    if (window.localStorage.getItem("Auth")) {
+      instance.defaults.headers["Authorization"] = window.localStorage.getItem("Auth");
+      instance.post('/review',review)
+      .then((response) => {
+      if(response.status == 201) {
+        useNavigate("/home");
+      }});
+    }
+    
+  }
+
+  getAllReviews(instance) {
+    instance.get("/reviews").then((response) =>{
+      console.log(response);
+    })
   }
 
   getReviewsByUserId(id) {

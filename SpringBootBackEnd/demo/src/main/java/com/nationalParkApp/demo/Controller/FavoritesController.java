@@ -27,7 +27,7 @@ public class FavoritesController {
     }
 
     @PostMapping("/addFavorites")
-    public Favorites addToFavorites(@RequestBody Favorites favorites) {
+    public ResponseEntity addToFavorites(@RequestBody Favorites favorites) {
         return favoritesService.addToFavorites(favorites);
     }
 

@@ -44,8 +44,29 @@ public class LoginController {
     }
 
     @RequestMapping("/user")
-    public UserEntity loginUser (@RequestBody User user) {
-        return userRepository.findByUsername(user.getUsername());
+    public ResponseEntity loginUser (@RequestBody User user) {
+        ResponseEntity response = null;
+        try {
+            String testUsername = user.getUsername();
+            String testPassword = user.getPassword();
+            String testHashword = passwordEncoder.encode(testPassword);
+            UserEntity savedUser = userRepository.findByUsername(testUsername);
+            if ( savedUser != null) {
+                if(passwordEncoder.matches(testPassword, savedUser.getPassword())) {
+                    response = ResponseEntity
+                            .status(HttpStatus.OK)
+                            .body(savedUser);
+                } else {
+                    response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect credentials");
+                }
+            }
+        } catch( Exception ex) {
+            response = ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("AN exception occurred due to " + ex.getMessage())
+                    ;
+        }
+        return response;
         }
 
 }

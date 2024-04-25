@@ -1,5 +1,7 @@
 package com.nationalParkApp.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nationalParkApp.demo.Model.Favorites;
 import com.nationalParkApp.demo.Model.Itinerary;
 import com.nationalParkApp.demo.Model.Review;
@@ -24,14 +26,17 @@ public class UserEntity {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ItineraryEntity> itineraries;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<ReviewEntity> reviews;
+    @JsonManagedReference
+    private List<ReviewEntity> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<FavoritesEntity> favorites;
 
-    private String role = "role";
+    private String role = "user";
 
 }

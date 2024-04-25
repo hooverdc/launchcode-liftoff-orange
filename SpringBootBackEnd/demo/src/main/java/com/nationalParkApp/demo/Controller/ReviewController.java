@@ -21,12 +21,12 @@ public class ReviewController {
     }
 
     @PostMapping("/review")
-    public Review createReview(@RequestBody Review review) {
+    public ResponseEntity<String> createReview(@RequestBody Review review) {
         return reviewService.createReview(review);
     }
 
-    @GetMapping("/review")
-    public List<Review> getAllReviews() {
+    @GetMapping("/reviews")
+    public ResponseEntity<String> getAllReviews() {
         return reviewService.getAllReviews();
     }
 
@@ -35,8 +35,8 @@ public class ReviewController {
         return reviewService.getAllReviewsByUserId(id);
     }
 
-    @GetMapping("/review/parkcode{id}")
-    public List<Review> getAllReviewsByParkCode(@PathVariable Long id) { return reviewService.getAllReviewsByUserId(id); }
+    @GetMapping("/review/{parkcode}")
+    public ResponseEntity<String> getAllReviewsByParkCode(@PathVariable String parkCode) { return reviewService.getAllReviewsByParkCode(parkCode); }
 
     @GetMapping(path = "/review{id}")
     public ResponseEntity<Review> getReviewById(@PathVariable Long id) {

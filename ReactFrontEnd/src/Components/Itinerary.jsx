@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import ItineraryServices from '../Services/ItineraryServices'
+import axios from "axios";
 
 function Itinerary() {
 
@@ -23,11 +24,22 @@ const [startDate, setStartDate] = useState(new Date());
 
 const [endDate, setEndDate] = useState(new Date());
 
-const user = {
-  id: 2,
-  username: "paulUser",
-  password: "userPaul",
-};
+const user = JSON.parse(window.localStorage.getItem("User"));
+const ITINERARY_API_BASE_URL = "http://localhost:8080/api/v1";
+const axiosInstance = axios.create({
+    withCredentials: true,
+    baseURL: ITINERARY_API_BASE_URL,
+    headers: {
+      "Cache-Control": "no-cache",
+      "Accept-Language": "en",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Access-Control-Allow-Methods": "POST",
+      "Access-Control-Allow-Headers":
+      "Content-Type, Authorization, X-Requested-With",
+      "Authorization": null
+    },
+  });
 
 const [itinerary, setItinerary] = useState({
   id: "",
@@ -44,17 +56,14 @@ const handleChange = (name, date) => {
 };
 
 const saveItinerary = (e) => {
-  setItinerary({ ...itinerary, user: user });
   e.preventDefault();
-  ItineraryServices.CreateItinerary(itinerary)
-    .then((response) => {
-      console.log(response);
+  setItinerary({ ...itinerary, user: user });
+  
+  ItineraryServices.CreateItinerary(itinerary, axiosInstance)
       //navigate("/home")
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+    }
+    
+
 
 const reset = (e) => {
   e.preventDefault();
