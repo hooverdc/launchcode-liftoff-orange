@@ -35,28 +35,36 @@ function Login() {
         setUser(prevUserLogin => ({ ...prevUserLogin, [name]: value }));
       };
       
-      return (<>
+      return (
+      
+      <div className="bg-nps-green-300 h-full">
         <Header />
         <Slideshow />
-    
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            value={userLogin.username}
-            onChange={handleChange}
-            placeholder="Username"
-          />
-          <input
-            type="password"
-            name="password"
-            value={userLogin.password}
-            onChange={handleChange}
-            placeholder="Enter a Password"
-          />
-          <button type="submit">Submit</button>
-        </form>
-        </>
+        <div className="flex justify-center">
+          <form className="flex flex-col p-4 w-1/2 items-center" onSubmit={handleSubmit}>
+            <label className="">Username: 
+              <input className=""
+              type="text"
+              name="username"
+              value={userLogin.username}
+              onChange={handleChange}
+              placeholder="Username"
+              />
+            </label>
+            <label className="">Password: 
+              <input
+              type="password"
+              name="password"
+              value={userLogin.password}
+              onChange={handleChange}
+              placeholder="Enter a Password"
+              />
+            </label>
+            <button type="submit" className="bg-nps-green-600">Submit</button>
+          </form>
+        </div>
+          
+      </div>
       );
     }
     
